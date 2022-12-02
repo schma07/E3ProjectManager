@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Schma.E3ProjectManager.Infrastructure.Auditing": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:57706;http://localhost:57708"
+    }
+  }
+}

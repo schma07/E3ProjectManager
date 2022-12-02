@@ -1,0 +1,15 @@
+# Setup a Kubernetes cluster
+## Create a Kubernetes cluster
+    -> az aks create \
+        --resource-group E3ProjectManagerResourceGroup \
+        --name e3ProjectManagerCluster \
+        --node-count 2 \
+        --generate-ssh-keys \
+        --attach-acr e3projectmanagercontainerregistry
+
+## Use Kubernetes CLI to connect to cluster with kubectl
+    (if not installed -> az aks install-cli)
+    -> az aks get-credentials --resource-group E3ProjectManagerResourceGroup --name e3ProjectManagerCluster
+    -> Show nodes: kubectl get nodes
+
+    

@@ -1,0 +1,13 @@
+﻿@using Schma.E3ProjectManager.Presentation.Web.RazorComponents
+@{
+	ViewBag.Title = "Developer Management";
+	ViewBag.pTitle = "Developer Management";
+	ViewBag.pageTitle = "Schma.E3ProjectManager";
+}
+
+<component type="typeof(DeveloperManagementComponent)" render-mode="Server" />
+
+@section Scripts
+{
+<partial name="_BlazorJS" />
+}

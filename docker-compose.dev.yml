@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  e3projectmanager-web:
+    image: e3projectmanagercontainerregistry.azurecr.io/e3projectmanager:dev
+    build:
+      context: .
+      dockerfile: Source/Dockerfile
+    ports:
+      - '80:80'     
+    environment:
+      AZURE_TENANT_ID: ${AZURE_TENANT_ID}
+      AZURE_CLIENT_ID: ${AZURE_CLIENT_ID}
+      AZURE_CLIENT_SECRET: ${AZURE_CLIENT_SECRET}
+      ASPNETCORE_ENVIRONMENT: Development
+    volumes:     
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro  
+    depends_on:
+      - mssql
+    networks:
+      - e3projectmanagerdevnet
+    restart: on-failure
+  mssql:
+    image:  "mcr.microsoft.com/mssql/server:2022-latest"
+    environment:
+      SA_PASSWORD: "?5b0451546a750925ff20f2f72a036f70364c2cdf170c54ff0893d030e0e617f8"
+      ACCEPT_EULA: "Y"
+    ports:
+      - '1433:1433'
+    networks:
+      - e3projectmanagerdevnet
+networks:
+  e3projectmanagerdevnet:
+    external: false
+    name: e3projectmanagerdevnet
+    

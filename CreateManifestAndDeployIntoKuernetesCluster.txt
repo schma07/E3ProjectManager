@@ -1,0 +1,5 @@
+# Run applications in Azure Kubernetes Service (AKS)
+## Update the manifest file
+	a) Get ACR login server:
+		->   az acr list --resource-group E3ProjectManagerResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
+	b) 

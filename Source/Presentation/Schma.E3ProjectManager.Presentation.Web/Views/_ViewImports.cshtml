@@ -1,0 +1,38 @@
+﻿@using Schma.E3ProjectManager.Presentation.Web
+@using Schma.E3ProjectManager.Presentation.Web.Controllers
+@using Schma.E3ProjectManager.Presentation.Web.ViewModels
+@using Schma.E3ProjectManager.Presentation.Web.RazorComponents
+@using Schma.E3ProjectManager.Infrastructure.Resources
+@using Schma.E3ProjectManager.Common
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
+@using System.Text.Encodings.Web
+@using Schma.E3ProjectManager.Presentation.Framework.Components
+@using Schma.E3ProjectManager.Presentation.Framework
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Http
+@using Microsoft.JSInterop
+@using System.Net.Http
+@using Schma.E3ProjectManager.Core.Application
+@using Blazored;
+@using Blazored.Modal;
+@using NEvaldas.Blazor.Select2
+@using Microsoft.AspNetCore.Authorization
+@using Schma.E3ProjectManager.Core.Application.Authorization
+@using Blazored.Toast
+@using Blazored.Toast.Services
+@using Blazored.Toast.Configuration
+@using Schma.E3ProjectManager.Core.Domain
+@using Schma.E3ProjectManager.Presentation.Web.Helpers
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Schma.E3ProjectManager.Presentation.Framework
+@addTagHelper *, Schma.E3ProjectManager.Presentation.Web
+
+
+@inject ILocalizationService L
+@inject IAuthenticatedUserService UserService

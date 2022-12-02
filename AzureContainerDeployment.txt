@@ -1,0 +1,23 @@
+# Push container image to Azure container registry
+
+## Create Resource Group & Container Registry
+- Container Registry requires Azure Resource group
+-> In azure CLI:
+	- az group create --name myResourceGroup --location westeurope
+- Create Azure container registry instance
+	- az acr create --resource-group myResourceGroup --name <acrName> --sku Basic  -> Containername allows only lowercase
+
+## Push image to Azure container registry
+- Log in to container registry
+	-> az acr login --name <acrName>
+- Create Tag with verion ( Test local image first)
+	a) First get login server address with list command:
+		-> az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
+	b) Tag local image with azure login ser address of container registry (image version)
+		-> docker tag schmae3projectmanagerpresentationweb:latest e3projectmanagercontainerregistry.azurecr.io/schmae3projectmanager:v1
+	c) Push and show azure repositories
+		-> docker push e3projectmanagercontainerregistry.azurecr.io/schmae3projectmanager:v1
+		->  Show images: az acr repository list --name e3projectmanagercontainerregistry --output table
+		    Show tags:   az acr repository show-tags --name e3projectmanagercontainerregistry --repository schmae3projectmanager --output table
+
+=> Next create Kubernetes cluster

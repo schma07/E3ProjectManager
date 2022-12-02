@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="8.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.2.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="2.1.3" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.19" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Schma.E3ProjectManager.Core.Application\Schma.E3ProjectManager.Core.Application.csproj" />
+    <ProjectReference Include="..\..\Schma.E3ProjectManager.Common\Schma.E3ProjectManager.Common.csproj" />
+    <ProjectReference Include="..\Schma.E3ProjectManager.Infrastructure.Resources\Schma.E3ProjectManager.Infrastructure.Resources.csproj" />
+  </ItemGroup>
+
+</Project>
