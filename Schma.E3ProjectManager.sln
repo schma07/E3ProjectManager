@@ -126,7 +126,6 @@ Global
 		{57C197FC-2818-4EDD-A5F8-156D773C3258}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{57C197FC-2818-4EDD-A5F8-156D773C3258}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{57C197FC-2818-4EDD-A5F8-156D773C3258}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57C197FC-2818-4EDD-A5F8-156D773C3258}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
