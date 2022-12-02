@@ -40,7 +40,7 @@ stages:
 
     - task: AzureKeyVault@2
       inputs:
-       azureSubscription: 'E3ProjectManagerServiceConnection'
+       azureSubscription: 'E3Projectmanager (53f03d79-3591-413-38360-15e35e239d1d)'
        KeyVaultName: 'E3PM-ProdSecrets'
        SecretsFilter: '*'
        RunAsPreJob: true
@@ -49,7 +49,7 @@ stages:
     - task: DockerCompose@0
       inputs:
         containerregistrytype: 'Azure Container Registry'
-        azureSubscription: 'E3Projectmanager (53f03d79-3591-4313-8360-15e35e239d1d)'
+        azureSubscription: 'E3Projectmanager (53f03d79-3591-413-38360-15e35e239d1d)'
         azureContainerRegistry: '{"loginServer":"e3projectmanagercontainerregistry.azurecr.io", "id" : "/subscriptions/53f03d79-3591-4313-8360-15e35e239d1d/resourceGroups/E3ProjectManagerResourceGroup/providers/Microsoft.ContainerRegistry/registries/e3projectmanagercontainerregistry"}'
         dockerComposeFile: '**/docker-compose.yml'
         additionalDockerComposeFiles: 'docker-compose.azurecontainerproduction.yml'
