@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  e3projectmanagerwebapplication:
+    image: e3projectmanagercontainerregistry.azurecr.io/e3projectmanager:prod
+    environment:
+      - ASPNETCORE_ENVIRONMENT=azurecontainerproduction
+      - ASPNETCORE_URLS=http://+:80      
+    ports:
+      - '80:80'   
+  

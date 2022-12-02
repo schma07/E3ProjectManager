@@ -8,6 +8,7 @@ using Schma.E3ProjectManager.Common;
 using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Infrastructure.Extensions;
 using Schma.E3ProjectManager.Infrastructure.Resources;
+using Schma.E3ProjectManager.Infrastructure.Services;
 using Schma.E3ProjectManager.Presentation.Framework.Services;
 using Schma.E3ProjectManager.Presentation.Web.Mappings;
 using Schma.E3ProjectManager.Presentation.Web.Services;
@@ -18,6 +19,7 @@ namespace Schma.E3ProjectManager.Presentation.Web.Extensions
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+
             services.AddInfrastructureLayer(configuration);
             services.AddSharedServices();
             services.AddApplicationCookie();
@@ -29,7 +31,7 @@ namespace Schma.E3ProjectManager.Presentation.Web.Extensions
                 config.AddProfile<AppProfile>();
                 config.AddExpressionMapping();
             });
-
+            
             services.AddTransient<IAuthenticatedUserService, AuthenticatedUserService>();
             services.AddScoped<ILocalizationService, LocalizationService>();
             services.AddScoped<INotificationService, NotificationService>();
@@ -54,6 +56,6 @@ namespace Schma.E3ProjectManager.Presentation.Web.Extensions
         private static void AddStorageOptions(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<FileStorageOptions>(x => configuration.GetSection("Storage").Bind(x));
-        }               
+        }
     }
 }

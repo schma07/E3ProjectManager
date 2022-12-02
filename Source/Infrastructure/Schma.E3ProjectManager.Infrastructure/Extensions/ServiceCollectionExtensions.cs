@@ -1,7 +1,8 @@
-﻿using System.Linq;
-using System;
+﻿using System;
+using System.Linq;
 using AutoMapper.Extensions.ExpressionMapping;
 using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +14,6 @@ using Schma.E3ProjectManager.Infrastructure.Mappings;
 using Schma.E3ProjectManager.Infrastructure.Models;
 using Schma.E3ProjectManager.Infrastructure.Repositories;
 using Schma.E3ProjectManager.Infrastructure.Services;
-using Azure.Security.KeyVault.Secrets;
 
 namespace Schma.E3ProjectManager.Infrastructure.Extensions
 {
@@ -57,19 +57,9 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             }
             else
             {
-                var vaultName = "E3PM-StageSecrets";
-                var keyVaultUrl = $"https://{vaultName}.vault.azure.net";
-                var client = new SecretClient(vaultUri: new Uri(keyVaultUrl), credential: new DefaultAzureCredential());
-
-                var secretsDict = new string[] { "ApplicationConnection", "IdentityConnection" }
-                    .Select(async name => await client.GetSecretAsync(name))
-                    .Select(task => task.Result.Value)
-                    .ToDictionary(secret => secret.Name, secret => secret.Value);
-
-
-                services.AddDbContext<IdentityDbContext>(options => options.UseSqlServer(secretsDict["IdentityConnection"]));
-                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(secretsDict["ApplicationConnection"]));
-                services.AddDbContext<EventStoreDbContext>(options => options.UseSqlServer(secretsDict["ApplicationConnection"]));
+                services.AddDbContext<IdentityDbContext>(options => options.UseSqlServer(configuration["IdentityConnection"]));
+                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration["ApplicationConnection"]));
+                services.AddDbContext<EventStoreDbContext>(options => options.UseSqlServer(configuration["ApplicationConnection"]));
             }
             services.AddScoped<IDbInitializerService, DbInitializerService>();
         }

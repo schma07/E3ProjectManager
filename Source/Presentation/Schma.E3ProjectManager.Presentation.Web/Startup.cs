@@ -72,7 +72,7 @@ namespace Schma.E3ProjectManager.Presentation.Web
 #if (DEBUG)
             mvcBuilder.AddRazorRuntimeCompilation();
 #endif
-                      
+
 
             services.AddInfrastructure(Configuration);
 
@@ -94,7 +94,7 @@ namespace Schma.E3ProjectManager.Presentation.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             var basePath = configuration.GetValue<string>("BasePath");
             if (!string.IsNullOrWhiteSpace(basePath))
