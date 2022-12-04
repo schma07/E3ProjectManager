@@ -83,5 +83,5 @@ stages:
               azureSubscription: 'E3ProjectmanagerServiceConnection (Ressource Group)'
               appName: '$(WebAppName)'
               appType: 'webAppLinux'
-              package: '$(build.artifactstagingdirectory)/$(Build.BuildNumber)/drop/Schma.E3ProjectManager.Presentation.Web.zip'
+              package: '$(Build.DefinitionName)/$(Build.BuildNumber)/drop/Schma.E3ProjectManager.Presentation.Web.zip'
 
