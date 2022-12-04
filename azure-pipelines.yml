@@ -10,10 +10,7 @@ resources:
   - repository: self
     type: git
     ref: refs/heads/development
-stages:
-- stage: 'Build'
-  displayName: 'Build the web application'    
-  jobs:
+jobs:
   - job: 'Build'
     displayName: 'Agent job 1'
     pool:
