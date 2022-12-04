@@ -83,5 +83,5 @@ stages:
               azureSubscription: 'E3ProjectmanagerServiceConnection (Ressource Group)'
               appName: '$(WebAppName)'
               appType: 'webAppLinux'
-              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+              package: '$(Pipeline.Workspace)/drop/*.zip'
 
