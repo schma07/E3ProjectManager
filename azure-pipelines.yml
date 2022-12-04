@@ -14,7 +14,7 @@ stages:
 - stage: 'Build'  
   jobs:
   - job: Job_1
-    displayName: Agent job 1
+    displayName: Agent build job
     timeoutInMinutes: 30
     pool:
       vmImage: windows-latest
