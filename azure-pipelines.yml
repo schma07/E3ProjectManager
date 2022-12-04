@@ -1,4 +1,4 @@
-# Variable 'ASPNETCORE_ENVIRONMENT' was defined in the Variables tab
+# Variable 'ASPNETCORE_ENVIRONMENT' was defined in the Variables ta
 variables:
 - name: BuildParameters.solution
   value: '**\*.sln'
