@@ -1,59 +1,66 @@
-# Docker
-# Build and push an image to Azure Container Registry
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
-trigger:
-- development
-
-resources:
-- repo: self
-
+# Variable 'ASPNETCORE_ENVIRONMENT' was defined in the Variables tab
 variables:
-  # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'e3pm-productioncontainer'
-  imageRepository: 'e3projectmanager'
-  containerRegistry: 'e3projectmanagercontainerregistry.azurecr.io'
-  dockerfilePath: './Source/Dockerfile'
-  tag: 'dev'
+- name: BuildParameters.solution
+  value: '**\*.sln'
+- name: BuildParameters.ArtifactName
+  value: drop
+name: $(date:yyyyMMdd)$(rev:.r)
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: refs/heads/development
+jobs:
+- job: Job_1
+  displayName: Agent job 1
+  pool:
+    vmImage: windows-latest
+  steps:
+  - checkout: self
+    clean: true
+    fetchTags: false
+  - task: NuGetToolInstaller@0
+    displayName: 'Use latest NuGet '
+    inputs:
+      versionSpec: x
+      checkLatest: true
+      
+  - task: NuGetCommand@2
+    displayName: NuGet restore
+    inputs:
+      solution: $(BuildParameters.solution)
 
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  - task: VSBuild@1
+    displayName: Build solution
+    inputs:
+      solution: $(BuildParameters.solution)
+      msbuildArgs: /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"
+      platform: $(BuildPlatform)
+      configuration: $(BuildConfiguration)
 
-stages:
-- stage: Build
-  displayName: Build and push stage
-  jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: $(vmImageName)
-    steps:
-    - task: Docker@2
-      displayName: Build and push an image to container registry
-      inputs:
-       command: buildAndPush
-       repository: $(imageRepository)
-       dockerfile: $(dockerfilePath)
-       containerRegistry: $(dockerRegistryServiceConnection)
-       tags: |
-         $(tag)  
+  - task: VSTest@2
+    displayName: Test Assemblies
+    inputs:
+      testAssemblyVer2: >-
+        **\$(BuildConfiguration)\*test*.dll
 
-    - task: AzureKeyVault@2
-      inputs:
-       azureSubscription: 'E3ProjectManagerServiceConnection'
-       KeyVaultName: 'E3PM-ProdSecrets'
-       SecretsFilter: '*'
-       RunAsPreJob: true
+        !**\obj\**
+      platform: $(BuildPlatform)
+      configuration: $(BuildConfiguration)
 
-  
-    - task: DockerCompose@0
-      inputs:
-        containerregistrytype: 'Azure Container Registry'
-        azureSubscription: 'E3Projectmanager (53f03d79-3591-4313-8360-15e35e239d1d)'
-        azureContainerRegistry: '{"loginServer":"e3projectmanagercontainerregistry.azurecr.io", "id" : "/subscriptions/53f03d79-3591-4313-8360-15e35e239d1d/resourceGroups/E3ProjectManagerResourceGroup/providers/Microsoft.ContainerRegistry/registries/e3projectmanagercontainerregistry"}'
-        dockerComposeFile: '**/docker-compose.yml'
-        additionalDockerComposeFiles: 'docker-compose.azurecontainerproduction.yml'
-        dockerComposeFileArgs: 'ASPNETCORE_ENVIRONMENT=azurecontainerproduction'
-        action: 'Run a Docker Compose command'
-        dockerComposeCommand: '-f docker-compose.yml -f docker-compose.azureproduction.yml'
-        arguments: '-- build'
+  - task: PublishSymbols@2
+    displayName: Publish symbols path
+    continueOnError: True
+    inputs:
+      SearchPattern: '**\bin\**\*.pdb'
+      PublishSymbols: false
+      SymbolServerType: TeamServices
+
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Artifact
+    condition: succeededOrFailed()
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
+      ArtifactName: $(BuildParameters.ArtifactName)
+      TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
+...
