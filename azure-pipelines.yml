@@ -7,7 +7,7 @@ variables:
 name: $(date:yyyyMMdd)$(rev:.r)
 resources:
   repositories:
-  - repository: development
+  - repository: self
     type: git
     ref: refs/heads/development
 stages:
