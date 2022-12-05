@@ -61,6 +61,15 @@ stages:
         PathtoPublish: $(build.artifactstagingdirectory)
         ArtifactName: $(BuildParameters.ArtifactName)
         TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
+        
+    - task: DownloadBuildArtifacts@1
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: '$(BuildParameters.ArtifactName)'
+        itemPattern: '**/*.zip'
+        downloadPath: '$(System.ArtifactsDirectory)'
+        
     - task: AzureWebApp@1
       inputs:
         azureSubscription: 'E3ProjectmanagerServiceConnection (Ressource Group)'
