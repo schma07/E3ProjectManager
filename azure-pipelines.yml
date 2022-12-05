@@ -61,27 +61,15 @@ stages:
         PathtoPublish: $(build.artifactstagingdirectory)
         ArtifactName: $(BuildParameters.ArtifactName)
         TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
-- stage: 'Deploy'
-  displayName: 'Deploy the web application'
-  dependsOn: Build
-  jobs:
-  - deployment: Deploy
-    pool:
-      vmImage: 'ubuntu-20.04'
-    environment: development
-    variables:
-    - group: E3ProjectManagerVariableGroup
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: current
-            artifact: drop
-          - task: AzureWebApp@1
-            displayName: 'Azure App Service Deploy: website'
-            inputs:
-              azureSubscription: 'E3ProjectmanagerServiceConnection (Ressource Group)'
-              appName: '$(WebAppName)'
-              appType: 'webAppLinux'
-              package: '$(Pipeline.Workspace)/drop/Schma.E3ProjectManager.Presentation.Web.zip'
-
+    - task: AzureWebApp@1
+      inputs:
+        azureSubscription: 'E3ProjectmanagerServiceConnection (Ressource Group)'
+        appType: 'webAppLinux'
+        appName: 'e3projectmanager-developer-release'
+        deployToSlotOrASE: true
+        resourceGroupName: 'E3ProjectManagerResourceGroup'
+        slotName: 'production'
+        package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+        runtimeStack: 'DOTNETCORE|6.0'
+        startUpCommand: 'dotnet exec Schma.E3ProjectManager.Presentation.Web.dll'
+        appSettings: '-ASPNETCORE_ENVIRONMENT azurecontainerproduction'
