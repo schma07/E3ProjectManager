@@ -61,24 +61,4 @@ stages:
         PathtoPublish: $(build.artifactstagingdirectory)
         ArtifactName: $(BuildParameters.ArtifactName)
         TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
-        
-    - task: DownloadBuildArtifacts@1
-      inputs:
-        buildType: 'current'
-        downloadType: 'single'
-        artifactName: '$(BuildParameters.ArtifactName)'
-        itemPattern: '**/*.zip'
-        downloadPath: '$(System.ArtifactsDirectory)'
-        
-    - task: AzureWebApp@1
-      inputs:
-        azureSubscription: 'E3ProjectmanagerServiceConnection (Ressource Group)'
-        appType: 'webAppLinux'
-        appName: 'e3projectmanager-developer-release'
-        deployToSlotOrASE: true
-        resourceGroupName: 'E3ProjectManagerResourceGroup'
-        slotName: 'production'
-        package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-        runtimeStack: 'DOTNETCORE|6.0'
-        startUpCommand: 'dotnet exec Schma.E3ProjectManager.Presentation.Web.dll'
-        appSettings: '-ASPNETCORE_ENVIRONMENT azurecontainerproduction'
+    
