@@ -2,7 +2,9 @@ version: '3.4'
 
 services:
   e3projectmanagerwebapplication:
-    image: e3projectmanagercontainerregistry.azurecr.io/e3projectmanager:prod
+    image: e3projectmanagercontainerregistry.azurecr.io/e3projectmanager:stagerelease
+    build:      
+      dockerfile: Source/Release.Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=azurecontainerproduction
       - ASPNETCORE_URLS=http://+:80      

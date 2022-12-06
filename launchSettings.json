@@ -3,6 +3,7 @@
     "Docker Compose": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
+      "composeLaunchServiceName": "e3projectmanagerwebapplication",
       "serviceActions": {
         "e3projectmanagerwebapplication": "StartDebugging",
         "mssql": "StartWithoutDebugging"

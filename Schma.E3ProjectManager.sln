@@ -24,7 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installation", "Installatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{9D25B1F7-3124-4A06-A61C-15F6E2B963B3}"
 	ProjectSection(SolutionItems) = preProject
-		Source\Dockerfile = Source\Dockerfile
+		Source\Debug.Dockerfile = Source\Debug.Dockerfile
+		Source\Release.Dockerfile = Source\Release.Dockerfile
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6ACCBAB0-D17A-41C2-B7C6-EE20314ED863}"

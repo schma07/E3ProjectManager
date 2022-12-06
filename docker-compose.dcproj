@@ -6,19 +6,19 @@
 		<ProjectGuid>57c197fc-2818-4edd-a5f8-156d773c3258</ProjectGuid>
 		<DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
 		<DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
-		<DockerComposeProjectName>e3projectmanager</DockerComposeProjectName>
+		<DockerComposeProjectName>e3projectmanager</DockerComposeProjectName>		
 	</PropertyGroup>
-	<ItemGroup>		
+	<ItemGroup>
+		<None Include="docker-compose.azurestage_debug.yml">
+			<DependentUpon>docker-compose.yml</DependentUpon>
+		</None>
+		<None Include="docker-compose.azurestage_release.yml">
+			<DependentUpon>docker-compose.yml</DependentUpon>
+		</None>
 		<None Include="docker-compose.override.yml">
 			<DependentUpon>docker-compose.yml</DependentUpon>
 		</None>
-		<None Include="docker-compose.azurestage.yml">
-			<DependentUpon>docker-compose.yml</DependentUpon>
-		</None>		
-		<None Include="docker-compose.azureproduction.yml">
-			<DependentUpon>docker-compose.yml</DependentUpon>
-		</None>		
-		<None Include="docker-compose.yml" />	
+		<None Include="docker-compose.yml" />
 		<None Include=".dockerignore" />
 	</ItemGroup>
 </Project>

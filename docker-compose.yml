@@ -5,6 +5,6 @@ services:
     container_name: e3projectmanagerwebapplication
     build:
       context: .
-      dockerfile: Source/Dockerfile    
+        
 
     
