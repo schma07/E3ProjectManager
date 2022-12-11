@@ -1,8 +1,37 @@
 version: '3.4'
 
 services:
-  e3projectmanager-web:
-    environment:   
-      - ASPNETCORE_URLS=http://+:80    
-    
-  
+  e3projectmanagerwebapplication:
+    image: e3projectmanagerweb
+    build:      
+      dockerfile: Source/Debug.Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=dockerdevelopment
+      - ASPNETCORE_URLS=https://+:443;http://+:80      
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=E3ProjectManager!12345678
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx     
+    networks:
+      - e3projectmanagerdevnet
+    ports:
+      - "8001:443"
+      - "8000:80"
+    depends_on:
+      - mssql
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+      - ~/.aspnet/https:/https:ro
+    restart: on-failure
+  mssql:
+    container_name: e3projectmanagersql
+    image:  "mcr.microsoft.com/mssql/server:2022-latest"
+    environment:
+      SA_PASSWORD: "?5b0451546a750925ff20f2f72a036f70364c2cdf170c54ff0893d030e0e617f8"
+      ACCEPT_EULA: "Y"
+    ports:
+      - '8433:1433'
+    networks:
+      - e3projectmanagerdevnet
+networks:
+  e3projectmanagerdevnet:
+    external: false
+    name: e3projectmanagerdevnet

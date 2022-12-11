@@ -1,3 +1,4 @@
+[![Build status](https://dev.azure.com/martinbraendle/E3ProjectManager/_apis/build/status/E3ProjectManager-ASP.NET-Production-CI)](https://dev.azure.com/martinbraendle/E3ProjectManager/_build/latest?definitionId=20)
 # E3ProjectManager
 -> Vision muss hier noch rein :-)
 

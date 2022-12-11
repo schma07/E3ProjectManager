@@ -13,7 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		DeveloperGuidelines.txt = DeveloperGuidelines.txt
-		deployment-webapp.yml = deployment-webapp.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -25,7 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installation", "Installatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{9D25B1F7-3124-4A06-A61C-15F6E2B963B3}"
 	ProjectSection(SolutionItems) = preProject
-		Source\Dockerfile = Source\Dockerfile
+		Source\Debug.Dockerfile = Source\Debug.Dockerfile
+		Source\Release.Dockerfile = Source\Release.Dockerfile
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6ACCBAB0-D17A-41C2-B7C6-EE20314ED863}"
@@ -56,14 +56,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schma.E3ProjectManager.Infr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schma.E3ProjectManager.Tests", "Tests\Schma.E3ProjectManager.Tests\Schma.E3ProjectManager.Tests.csproj", "{4CF26077-AE2E-4C9F-A193-771CD2592228}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F0E02398-2E67-4DB4-BA2B-9741504B3D28}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FAQ", "FAQ", "{F34C5D12-6480-442C-9E2B-59222B8C23CD}"
 	ProjectSection(SolutionItems) = preProject
 		AzureContainerDeployment.txt = AzureContainerDeployment.txt
 		CreateAzureKubernetesCluster.txt = CreateAzureKubernetesCluster.txt
 		CreateManifestAndDeployIntoKuernetesCluster.txt = CreateManifestAndDeployIntoKuernetesCluster.txt
+		UsedSecretKeyVaults.txt = UsedSecretKeyVaults.txt
 	EndProjectSection
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{57C197FC-2818-4EDD-A5F8-156D773C3258}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,10 +124,9 @@ Global
 		{4CF26077-AE2E-4C9F-A193-771CD2592228}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CF26077-AE2E-4C9F-A193-771CD2592228}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CF26077-AE2E-4C9F-A193-771CD2592228}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F0E02398-2E67-4DB4-BA2B-9741504B3D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F0E02398-2E67-4DB4-BA2B-9741504B3D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F0E02398-2E67-4DB4-BA2B-9741504B3D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F0E02398-2E67-4DB4-BA2B-9741504B3D28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57C197FC-2818-4EDD-A5F8-156D773C3258}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{57C197FC-2818-4EDD-A5F8-156D773C3258}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{57C197FC-2818-4EDD-A5F8-156D773C3258}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
