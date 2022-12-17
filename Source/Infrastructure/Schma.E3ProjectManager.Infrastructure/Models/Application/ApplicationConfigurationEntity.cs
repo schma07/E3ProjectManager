@@ -1,4 +1,6 @@
-﻿namespace Schma.E3ProjectManager.Infrastructure.Models
+﻿using Schma.Data.Abstractions;
+
+namespace Schma.E3ProjectManager.Infrastructure.Models
 {
     /// <summary>
     /// Data entity for application-specific configurations

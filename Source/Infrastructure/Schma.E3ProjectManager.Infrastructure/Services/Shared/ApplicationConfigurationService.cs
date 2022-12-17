@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
+using Schma.Data.Abstractions;
 using Schma.E3ProjectManager.Common;
 using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Core.Application.DTOs;

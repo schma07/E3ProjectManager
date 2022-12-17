@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using Microsoft.EntityFrameworkCore;
+using Schma.Data.Abstractions;
 using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Infrastructure.DbContexts;
 

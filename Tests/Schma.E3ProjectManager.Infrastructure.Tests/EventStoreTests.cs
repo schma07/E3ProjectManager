@@ -6,6 +6,8 @@ using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Core.Domain;
 using Schma.E3ProjectManager.Infrastructure.Models;
 using Schma.E3ProjectManager.Tests;
+using Schma.EventStore.EntityFramework.Entities;
+using Schma.EventStore.Abstractions;
 using Xunit;
 
 namespace Schma.E3ProjectManager.Infrastructure.Tests

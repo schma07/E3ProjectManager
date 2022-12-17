@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Schma.E3ProjectManager.Common;
 using Schma.E3ProjectManager.Core.Domain.Entities.UserAggregate;
+using Schma.Messaging.Abstractions;
 
 namespace Schma.E3ProjectManager.Core.Application.Commands
 {

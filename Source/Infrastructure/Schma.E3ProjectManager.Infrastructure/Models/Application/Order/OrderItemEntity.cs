@@ -1,4 +1,5 @@
 ﻿using System;
+using Schma.Data.Abstractions;
 
 namespace Schma.E3ProjectManager.Infrastructure.Models
 {

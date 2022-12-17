@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Presentation.Framework.Interfaces;
 using Schma.E3ProjectManager.Presentation.Framework.Services;
+using Schma.Messaging.Abstractions;
 
 namespace Schma.E3ProjectManager.Presentation.Framework.Components
 {

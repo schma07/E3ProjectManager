@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ardalis.GuardClauses;
-
+using Schma.Domain.Abstractions;
 
 namespace Schma.E3ProjectManager.Core.Domain.Entities.UserAggregate
 {
