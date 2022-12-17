@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Schma.E3ProjectManager.Common;
 using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Core.Application.Commands;
+using Schma.Messaging.Abstractions;
 
 namespace Schma.E3ProjectManager.Presentation.Web.Controllers
 {

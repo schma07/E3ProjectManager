@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using MassTransit;
+using Schma.Messaging.Abstractions;
 
 namespace Schma.E3ProjectManager.Core.Application
 {

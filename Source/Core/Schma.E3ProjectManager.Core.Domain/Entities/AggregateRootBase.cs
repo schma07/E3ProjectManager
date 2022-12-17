@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Schma.Domain.Abstractions;
 
 namespace Schma.E3ProjectManager.Core.Domain
 {

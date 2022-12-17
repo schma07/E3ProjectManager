@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Ardalis.GuardClauses;
+using Schma.Domain.Abstractions;
 
 namespace Schma.E3ProjectManager.Core.Domain.Entities.OrderAggregate
 {

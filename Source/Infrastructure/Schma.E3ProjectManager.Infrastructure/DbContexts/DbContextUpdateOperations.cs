@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Schma.Data.Abstractions;
 using Schma.E3ProjectManager.Infrastructure.Models;
 
 namespace Schma.E3ProjectManager.Infrastructure.DbContexts

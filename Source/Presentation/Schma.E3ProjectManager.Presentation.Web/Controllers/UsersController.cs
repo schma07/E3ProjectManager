@@ -15,6 +15,7 @@ using Schma.E3ProjectManager.Core.Application.ReadModels;
 using Schma.E3ProjectManager.Infrastructure.Resources;
 using Schma.E3ProjectManager.Presentation.Framework;
 using Schma.E3ProjectManager.Presentation.Web.ViewModels;
+using Schma.Messaging.Abstractions;
 
 namespace Schma.E3ProjectManager.Presentation.Web.Controllers
 {

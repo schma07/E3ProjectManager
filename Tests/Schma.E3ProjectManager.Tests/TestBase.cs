@@ -12,6 +12,8 @@ using Schma.E3ProjectManager.Infrastructure.DbContexts;
 using Schma.E3ProjectManager.Infrastructure.Extensions;
 using Schma.E3ProjectManager.Infrastructure.Models;
 using Schma.E3ProjectManager.Tests.Mocks;
+using Schma.Messaging.Abstractions;
+using Schma.EventStore.EntityFramework;
 
 namespace Schma.E3ProjectManager.Tests
 {

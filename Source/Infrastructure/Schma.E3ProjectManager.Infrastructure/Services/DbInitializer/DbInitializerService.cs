@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Schma.E3ProjectManager.Infrastructure.DbContexts;
 using Schma.E3ProjectManager.Infrastructure.Models;
+using Schma.EventStore.EntityFramework;
 
 namespace Schma.E3ProjectManager.Infrastructure.Services
 {

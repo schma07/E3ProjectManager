@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Schma.E3ProjectManager.Core.Application;
+using Schma.Data.Abstractions;
 using Schma.E3ProjectManager.Infrastructure.Models;
 using Schma.E3ProjectManager.Tests;
 using Xunit;

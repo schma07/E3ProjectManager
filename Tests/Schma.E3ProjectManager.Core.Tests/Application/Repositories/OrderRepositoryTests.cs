@@ -5,6 +5,7 @@ using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Core.Domain;
 using Schma.E3ProjectManager.Core.Domain.Entities.OrderAggregate;
 using Schma.E3ProjectManager.Tests;
+using Schma.EventStore.Abstractions;
 using Xunit;
 
 namespace Schma.E3ProjectManager.Core.Tests.Application.Repositories

@@ -104,7 +104,7 @@ namespace Schma.E3ProjectManager.Presentation.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseMustChangePassword();
+            //app.UseMustChangePassword();
 
             var supportedCultures = new[] { "de", "en" };
             var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
@@ -121,7 +121,6 @@ namespace Schma.E3ProjectManager.Presentation.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapBlazorHub();
             });
-
 
         }
     }
