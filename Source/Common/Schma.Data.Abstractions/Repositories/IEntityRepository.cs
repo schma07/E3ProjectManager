@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Schma.E3ProjectManager.Core.Domain;
+﻿using Schma.Domain.Abstractions;
 
 namespace Schma.Data.Abstractions
 {

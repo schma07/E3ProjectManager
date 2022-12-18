@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MassTransit.Mediator;
 using Schma.E3ProjectManager.Core.Application;
+using Schma.Messaging.Abstractions;
 
 namespace Schma.E3ProjectManager.Infrastructure.Services
 {

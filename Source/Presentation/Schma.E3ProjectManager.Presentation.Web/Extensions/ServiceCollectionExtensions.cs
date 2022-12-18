@@ -19,7 +19,6 @@ namespace Schma.E3ProjectManager.Presentation.Web.Extensions
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-
             services.AddInfrastructureLayer(configuration);
             services.AddSharedServices();
             services.AddApplicationCookie();

@@ -2,9 +2,9 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Schma.E3ProjectManager.Infrastructure
+namespace Schma.EventStore.Abstractions
 {
-    internal class PrivateSetterContractResolver : DefaultContractResolver
+    public class PrivateSetterContractResolver : DefaultContractResolver
     {
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {

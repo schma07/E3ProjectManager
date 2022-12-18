@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Schma.Data.Abstractions;
-using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Infrastructure.Identity;
 using Schma.E3ProjectManager.Infrastructure.Models;
 

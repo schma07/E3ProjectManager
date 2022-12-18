@@ -1,4 +1,4 @@
-﻿using Schma.Data.Abstractions;
+﻿using Schma.Domain.Abstractions;
 
 namespace Schma.Data.Abstractions
 {

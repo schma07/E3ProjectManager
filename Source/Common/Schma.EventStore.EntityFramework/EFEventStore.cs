@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using Schma.E3ProjectManager.Core.Application;
-using Schma.E3ProjectManager.Core.Application.Exceptions;
-using Schma.E3ProjectManager.Core.Domain;
-using Schma.E3ProjectManager.Infrastructure.Models;
-using Schma.EventStore.EntityFramework.DbContext;
+using Schma.Domain.Abstractions;
+using Schma.EventStore.Abstractions;
+using Schma.EventStore.EntityFramework.Entities;
 
 namespace Schma.EventStore.EntityFramework
 {

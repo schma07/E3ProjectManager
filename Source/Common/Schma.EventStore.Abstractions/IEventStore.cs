@@ -1,4 +1,4 @@
-﻿using Schma.Domain.Abstractions
+﻿using Schma.Domain.Abstractions;
 
 namespace Schma.EventStore.Abstractions
 {
