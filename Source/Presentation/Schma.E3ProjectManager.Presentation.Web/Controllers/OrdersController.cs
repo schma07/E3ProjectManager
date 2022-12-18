@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Core.Application.Queries.Orders;
 using Schma.E3ProjectManager.Presentation.Web.ViewModels.Orders;
+using Schma.Messaging.Abstractions;
 
 namespace Schma.E3ProjectManager.Presentation.Web.Controllers
 {

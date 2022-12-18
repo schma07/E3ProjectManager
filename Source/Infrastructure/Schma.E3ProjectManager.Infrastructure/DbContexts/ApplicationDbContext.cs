@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Schma.Data.Abstractions;
 using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Infrastructure.Auditing;
 using Schma.E3ProjectManager.Infrastructure.Models;

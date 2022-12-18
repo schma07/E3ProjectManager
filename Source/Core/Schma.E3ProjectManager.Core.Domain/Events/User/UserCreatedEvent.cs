@@ -1,4 +1,6 @@
-﻿namespace Schma.E3ProjectManager.Core.Domain
+﻿using Schma.Domain.Abstractions;
+
+namespace Schma.E3ProjectManager.Core.Domain
 {
     /// <summary>
     /// User Created domain event

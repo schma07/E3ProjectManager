@@ -1,18 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
-    <PackageReference Include="MassTransit" Version="8.0.6" />
+    <PackageReference Include="MassTransit" Version="8.0.9" />
     <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Schma.Data.Abstractions\Schma.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Common\Schma.Domain.Abstractions\Schma.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Common\Schma.Messaging.Abstractions\Schma.Messaging.Abstractions.csproj" />
     <ProjectReference Include="..\..\Schma.E3ProjectManager.Common\Schma.E3ProjectManager.Common.csproj" />
     <ProjectReference Include="..\Schma.E3ProjectManager.Core.Domain\Schma.E3ProjectManager.Core.Domain.csproj" />
   </ItemGroup>

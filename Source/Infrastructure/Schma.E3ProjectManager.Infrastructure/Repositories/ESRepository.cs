@@ -3,10 +3,9 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Schma.E3ProjectManager.Core.Application;
-using Schma.E3ProjectManager.Core.Application.Exceptions;
-using Schma.E3ProjectManager.Core.Domain;
-
+using Schma.Data.Abstractions;
+using Schma.Domain.Abstractions;
+using Schma.EventStore.Abstractions;
 
 namespace Schma.E3ProjectManager.Infrastructure
 {

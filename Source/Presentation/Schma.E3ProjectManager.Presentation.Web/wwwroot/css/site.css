@@ -9,13 +9,13 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-    color: #009988;
+    color: #0366d6;
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #009988;
-    border-color: #a3aaae;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles

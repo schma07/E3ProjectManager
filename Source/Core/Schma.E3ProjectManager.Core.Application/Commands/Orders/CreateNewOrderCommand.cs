@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Schma.E3ProjectManager.Common;
 using Schma.E3ProjectManager.Core.Domain.Entities.OrderAggregate;
+using Schma.Messaging.Abstractions;
 
 namespace Schma.E3ProjectManager.Core.Application.Commands
 {

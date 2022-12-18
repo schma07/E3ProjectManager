@@ -1132,7 +1132,7 @@ body[data-sidebar="colored"].vertical-collpsed .vertical-menu #sidebar-menu ul l
     }
 
     body[data-layout="horizontal"][data-topbar="light"] .topnav {
-        background-color: #009988;
+        background-color: #556ee6;
     }
 
         body[data-layout="horizontal"][data-topbar="light"] .topnav .navbar-nav .nav-link {

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Linq;
-using AutoMapper.Extensions.ExpressionMapping;
-using Azure.Identity;
-using Azure.Security.KeyVault.Secrets;
+﻿using AutoMapper.Extensions.ExpressionMapping;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Schma.Data.Abstractions;
 using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Infrastructure.DbContexts;
 using Schma.E3ProjectManager.Infrastructure.Identity.Factories;
@@ -14,6 +11,9 @@ using Schma.E3ProjectManager.Infrastructure.Mappings;
 using Schma.E3ProjectManager.Infrastructure.Models;
 using Schma.E3ProjectManager.Infrastructure.Repositories;
 using Schma.E3ProjectManager.Infrastructure.Services;
+using Schma.Messaging.Abstractions;
+using Schma.EventStore.EntityFramework.Extensions;
+using Schma.EventStore.Abstractions;
 
 namespace Schma.E3ProjectManager.Infrastructure.Extensions
 {
@@ -24,7 +24,11 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             services.AddDatabasePersistence(configuration);
             services.AddRepositories();
             services.AddIdentity();
-            services.AddEventStore();
+            services.AddEventStoreEFCore((o) =>
+            {
+                o.UseInMemoryDatabase = configuration.GetValue<bool>("UseInMemoryDatabase");
+                o.ConnectionStringSQL = configuration.GetConnectionString(configuration["ApplicationConnection"]);
+            });
             services.AddScoped<OrderAddressResolver>();
             services.AddAutoMapper(config =>
             {
@@ -51,15 +55,12 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
                 services.AddDbContext<IdentityDbContext>(options =>
                     options.UseInMemoryDatabase("IdentityDb"));
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseInMemoryDatabase("ApplicationDb"));
-                services.AddDbContext<EventStoreDbContext>(options =>
-                    options.UseInMemoryDatabase("EventStoreDb"));
+                    options.UseInMemoryDatabase("ApplicationDb"));               
             }
             else
             {
                 services.AddDbContext<IdentityDbContext>(options => options.UseSqlServer(configuration["IdentityConnection"]));
-                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration["ApplicationConnection"]));
-                services.AddDbContext<EventStoreDbContext>(options => options.UseSqlServer(configuration["ApplicationConnection"]));
+                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration["ApplicationConnection"]));                
             }
             services.AddScoped<IDbInitializerService, DbInitializerService>();
         }
@@ -99,13 +100,6 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             });
             services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
-        }
-
-        private static void AddEventStore(this IServiceCollection services)
-        {
-            services.AddScoped<IEventStore, EFEventStore>();
-            services.AddScoped<IEventStoreSnapshotProvider, EFEventStoreSnapshotProvider>();
-            services.AddScoped<IRetroactiveEventsService, RetroactiveEventsService>();
-        }
+        }        
     }
 }

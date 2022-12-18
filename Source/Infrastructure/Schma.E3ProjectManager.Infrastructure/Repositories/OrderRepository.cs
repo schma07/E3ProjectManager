@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
+using Schma.Data.Abstractions;
 using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Core.Domain.Entities.OrderAggregate;
 using Schma.E3ProjectManager.Infrastructure.Models;
