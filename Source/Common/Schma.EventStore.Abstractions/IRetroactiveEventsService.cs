@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Schma.E3ProjectManager.Core.Domain;
+﻿using Schma.Domain.Abstractions;
 
 namespace Schma.EventStore.Abstractions
 {

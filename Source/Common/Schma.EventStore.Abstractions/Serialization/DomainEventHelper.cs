@@ -1,12 +1,11 @@
-﻿using System;
-using Newtonsoft.Json;
-using Schma.E3ProjectManager.Core.Domain;
+﻿using Newtonsoft.Json;
+using Schma.Domain.Abstractions;
 
-namespace Schma.E3ProjectManager.Infrastructure
+namespace Schma.EventStore.Abstractions
 {
-    internal static class DomainEventHelper
+    public static class DomainEventHelper
     {
-        private static readonly JsonSerializerSettings _jsonSerializerSettings = new JsonSerializerSettings { ContractResolver = new PrivateSetterContractResolver() };
+        public static readonly JsonSerializerSettings _jsonSerializerSettings = new JsonSerializerSettings { ContractResolver = new PrivateSetterContractResolver() };
 
         public static IDomainEvent<TAggregateId> ConstructDomainEvent<TAggregateId>(string data, string assemblyTypeName)
         {

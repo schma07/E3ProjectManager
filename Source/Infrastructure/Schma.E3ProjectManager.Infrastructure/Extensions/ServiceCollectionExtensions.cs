@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Schma.Data.Abstractions;
 using Schma.E3ProjectManager.Core.Application;
 using Schma.E3ProjectManager.Infrastructure.DbContexts;
 using Schma.E3ProjectManager.Infrastructure.Identity.Factories;
@@ -12,7 +13,7 @@ using Schma.E3ProjectManager.Infrastructure.Repositories;
 using Schma.E3ProjectManager.Infrastructure.Services;
 using Schma.Messaging.Abstractions;
 using Schma.EventStore.EntityFramework.Extensions;
-using Schma.Data.Abstractions;
+using Schma.EventStore.Abstractions;
 
 namespace Schma.E3ProjectManager.Infrastructure.Extensions
 {
@@ -23,7 +24,11 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             services.AddDatabasePersistence(configuration);
             services.AddRepositories();
             services.AddIdentity();
-            services.AddEventStoreEFCore(configuration);
+            services.AddEventStoreEFCore((o) =>
+            {
+                o.UseInMemoryDatabase = configuration.GetValue<bool>("UseInMemoryDatabase");
+                o.ConnectionStringSQL = configuration.GetConnectionString(configuration["ApplicationConnection"]);
+            });
             services.AddScoped<OrderAddressResolver>();
             services.AddAutoMapper(config =>
             {
@@ -95,13 +100,6 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             });
             services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
-        }
-
-        private static void AddEventStore(this IServiceCollection services)
-        {
-            services.AddScoped<IEventStore, EFEventStore>();
-            services.AddScoped<IEventStoreSnapshotProvider, EFEventStoreSnapshotProvider>();
-            services.AddScoped<IRetroactiveEventsService, RetroactiveEventsService>();
-        }
+        }        
     }
 }

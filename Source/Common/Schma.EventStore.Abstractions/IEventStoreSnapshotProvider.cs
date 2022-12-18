@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Schma.E3ProjectManager.Core.Domain;
+﻿using Schma.Domain.Abstractions;
 
 namespace Schma.EventStore.Abstractions
 {

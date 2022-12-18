@@ -2,10 +2,8 @@ using System;
 using System.IO;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
-using Azure.Extensions.AspNetCore.Configuration.Secrets;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.AzureKeyVault;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -23,7 +21,6 @@ namespace Schma.E3ProjectManager.Presentation.Web
         public static void Main(string[] args)
         {
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
 
             _configurationRoot = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -59,23 +56,27 @@ namespace Schma.E3ProjectManager.Presentation.Web
                 .ConfigureAppConfiguration((context, config) =>
                 {
                     var builtConfig = config.Build();
-
-                    if (!context.HostingEnvironment.IsEnvironment("azurecontainerproduction"))
+                    if (!context.HostingEnvironment.IsDevelopment())
                     {
-                        string keyVaultUrl = builtConfig["AzureKeyVault:Endpoint"];
-                        string tenantId = builtConfig["AzureKeyVault:TenantId"];
-                        string clientId = builtConfig["AzureKeyVault:ClientId"];
-                        string clientSecretId = builtConfig["AzureKeyVault:ClientSecretId"];
 
-                        var credential = new ClientSecretCredential(tenantId, clientId, clientSecretId);
+                        if (!context.HostingEnvironment.IsEnvironment("azurecontainerproduction"))
+                        {
+                            string keyVaultUrl = builtConfig["AzureKeyVault:Endpoint"];
+                            string tenantId = builtConfig["AzureKeyVault:TenantId"];
+                            string clientId = builtConfig["AzureKeyVault:ClientId"];
+                            string clientSecretId = builtConfig["AzureKeyVault:ClientSecretId"];
 
-                        var secretClient = new SecretClient(new Uri(keyVaultUrl), credential);
-                        config.AddAzureKeyVault(secretClient, new AzureKeyVaultConfigurationOptions());
-                    }
-                    else
-                    {
-                        string keyVaultUrl = builtConfig["AzureKeyVaultEndpoint"];
-                        var serviceClient = new SecretClient(new Uri(keyVaultUrl), new DefaultAzureCredential());
+                            var credential = new ClientSecretCredential(tenantId, clientId, clientSecretId);
+
+                            var secretClient = new SecretClient(new Uri(keyVaultUrl), credential);
+                            config.AddAzureKeyVault(secretClient, new AzureKeyVaultConfigurationOptions());
+                        }
+                        else
+                        {
+                            string keyVaultUrl = builtConfig["AzureKeyVaultEndpoint"];
+                            var serviceClient = new SecretClient(new Uri(keyVaultUrl), new DefaultAzureCredential());
+                        }
+
                     }
                 })
                 .ConfigureWebHostDefaults(webBuilder =>

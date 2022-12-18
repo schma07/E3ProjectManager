@@ -43,17 +43,6 @@ namespace Schma.EventStore.EntityFramework
             //Retroactive events
             var retroactiveEventEntity = builder.Entity<RetroactiveEventEntity>().ToTable("RetroactiveEvents");
             retroactiveEventEntity.HasKey(k => k.Id);
-        }
-
-        /// <summary>
-        /// Overrides the <see cref="SaveChangesAsync(CancellationToken)"/>
-        /// </summary>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            DbContextUpdateOperations.UpdateDates(ChangeTracker.Entries<AuditableEntity>(), _authenticatedUserService.Username);
-            return base.SaveChangesAsync(true, cancellationToken);
-        }
+        }                
     }
 }
