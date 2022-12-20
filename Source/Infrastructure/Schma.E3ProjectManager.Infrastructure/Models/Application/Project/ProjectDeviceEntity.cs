@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Schma.Data.Abstractions;
 
-namespace Schma.E3ProjectManager.Infrastructure.Models.Application.Project
+namespace Schma.E3ProjectManager.Infrastructure.Models
 {
     public class ProjectDeviceEntity : DataEntityBase<Guid>
     {

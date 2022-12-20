@@ -20,6 +20,10 @@ namespace Schma.E3ProjectManager.Infrastructure.DbContexts
 
         public DbSet<OrderEntity> Orders { get; set; }
         public DbSet<OrderItemEntity> OrderItems { get; set; }
+
+        public DbSet<ProjectEntity> ProjectEntities { get; set; }
+        public DbSet<ProjectDeviceEntity> ProjectDevices { get; set; }
+
         public DbSet<AuditHistory> AuditHistory { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IAuthenticatedUserService authenticatedUser) : base(options)
@@ -60,6 +64,24 @@ namespace Schma.E3ProjectManager.Infrastructure.DbContexts
                 oi.Property(oi => oi.Quantity).IsRequired();
                 oi.Property(oi => oi.ProductName).IsRequired();
                 oi.Property(oi => oi.ProductPrice).IsRequired();
+            });
+
+            //Projects
+            builder.Entity<ProjectEntity>().ToTable("Projects", DOMAIN_SCHEMA);
+            builder.Entity<ProjectEntity>(o =>
+            {
+                o.HasMany(o => o.ProjectDevices).WithOne(oi => oi.Project).HasForeignKey(o => o.ProjectId).OnDelete(DeleteBehavior.Cascade);
+            });
+
+            //Project Devices
+            builder.Entity<ProjectDeviceEntity>().ToTable("ProjectDevices", DOMAIN_SCHEMA);
+            builder.Entity<ProjectDeviceEntity>(pd =>
+            {
+                pd.Property(pd => pd.SupplierArticleNumber).IsRequired();
+                pd.Property(pd => pd.DeviceName).IsRequired();
+                pd.Property(pd => pd.DeviceLocation).IsRequired();
+                pd.Property(pd => pd.DeviceFunction).IsRequired();
+                pd.Property(pd => pd.Quantity).IsRequired();                 
             });
         }
 

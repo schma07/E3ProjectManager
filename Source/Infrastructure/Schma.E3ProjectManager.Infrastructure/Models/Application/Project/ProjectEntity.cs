@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Schma.Data.Abstractions;
 
-namespace Schma.E3ProjectManager.Infrastructure.Models.Application.Project
+namespace Schma.E3ProjectManager.Infrastructure.Models
 {
     /// <summary>
     /// Data entity for Project

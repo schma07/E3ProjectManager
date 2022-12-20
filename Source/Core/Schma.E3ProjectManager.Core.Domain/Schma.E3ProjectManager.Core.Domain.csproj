@@ -20,9 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Entities\DeviceAggregate\" />
-    <Folder Include="Entities\ProjectConfigurationAggregate\" />
     <Folder Include="Events\Device\" />
-    <Folder Include="Events\ProjectConfiguration\" />
   </ItemGroup>
 
 </Project>
