@@ -23,7 +23,6 @@
     <Folder Include="Entities\ProjectConfigurationAggregate\" />
     <Folder Include="Events\Device\" />
     <Folder Include="Events\ProjectConfiguration\" />
-    <Folder Include="Events\Project\" />
   </ItemGroup>
 
 </Project>

@@ -63,7 +63,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Tests
         public async Task EventStore_LoadAsync_AggregateVersionNotFound_ReturnsEmptyDomainEventList()
         {
             Guid aggregateId = Guid.NewGuid();
-            AddDummyEvent(typeof(OrderCreatedEvent), aggregateId.ToString(), 0);
+            AddDummyEvent(typeof(ProjectCreatedEvent), aggregateId.ToString(), 0);
             var events = await _eventStore.LoadAsync(aggregateId, "Order", 10, 11);
 
             Assert.Empty(events);
@@ -74,7 +74,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Tests
         {
             Guid aggregateId = Guid.NewGuid();
             int aggergateVersion = 0;
-            AddDummyEvent(typeof(OrderCreatedEvent), aggregateId.ToString(), aggergateVersion);
+            AddDummyEvent(typeof(ProjectCreatedEvent), aggregateId.ToString(), aggergateVersion);
             var events = await _eventStore.LoadAsync(aggregateId, "Order", aggergateVersion, 1);
 
             Assert.NotEmpty(events);
@@ -84,7 +84,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Tests
         public async Task EventStore_LoadAsync_ReturnsDomainEventsForAggregate_Events_ContainEventType()
         {
             Guid aggregateId = Guid.NewGuid();
-            Type eventType = typeof(OrderCreatedEvent);
+            Type eventType = typeof(ProjectCreatedEvent);
             AddDummyEvent(eventType, aggregateId.ToString(), 0);
             var events = await _eventStore.LoadAsync(aggregateId, "Order", 0, 1);
 
