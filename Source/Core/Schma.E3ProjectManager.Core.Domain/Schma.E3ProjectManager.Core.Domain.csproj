@@ -18,4 +18,12 @@
     <ProjectReference Include="..\..\Common\Schma.Domain.Abstractions\Schma.Domain.Abstractions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\DeviceAggregate\" />
+    <Folder Include="Entities\ProjectConfigurationAggregate\" />
+    <Folder Include="Events\Device\" />
+    <Folder Include="Events\ProjectConfiguration\" />
+    <Folder Include="Events\Project\" />
+  </ItemGroup>
+
 </Project>

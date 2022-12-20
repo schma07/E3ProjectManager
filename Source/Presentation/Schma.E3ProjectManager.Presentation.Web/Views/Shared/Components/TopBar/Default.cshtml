@@ -3,6 +3,12 @@
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
+            <div>
+                <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light" data-toggle="collapse" data-target="#topnav-menu-content">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+            </div>
+
             <div class="navbar-brand-box">
                 <a asp-controller="Home" asp-action="Index" class="logo logo-light">
                     <img src="~/assets/images/pantecautomation.svg" alt="" height="60">
@@ -12,10 +18,6 @@
                     <img src="~/assets/images/pantecautomation.svg" alt="" height="60">
                 </a>
             </div>
-
-            <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light" data-toggle="collapse" data-target="#topnav-menu-content">
-                <i class="fa fa-fw fa-bars"></i>
-            </button>
         </div>
 
         <div class="d-flex">
@@ -90,8 +92,8 @@ waves-effect" data-toggle="fullscreen">
 </div>
 
 <script>
-    $(document).ready(function() {
-        $('#logoutLink').click(function() {
+    $(document).ready(function () {
+        $('#logoutLink').click(function () {
             document.logoutForm.submit(); return false;
         }).show();
     });
