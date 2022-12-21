@@ -11,9 +11,8 @@ using Schma.E3ProjectManager.Infrastructure.Mappings;
 using Schma.E3ProjectManager.Infrastructure.Models;
 using Schma.E3ProjectManager.Infrastructure.Repositories;
 using Schma.E3ProjectManager.Infrastructure.Services;
-using Schma.Messaging.Abstractions;
 using Schma.EventStore.EntityFramework.Extensions;
-using Schma.EventStore.Abstractions;
+using Schma.Messaging.Abstractions;
 
 namespace Schma.E3ProjectManager.Infrastructure.Extensions
 {
@@ -70,6 +69,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             services.AddScoped(typeof(IEntityRepository<,>), typeof(DataEntityRepository<,>));
             services.AddScoped(typeof(IESRepository<,>), typeof(ESRepository<,>));
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
         }
 
         private static void AddIdentity(this IServiceCollection services)

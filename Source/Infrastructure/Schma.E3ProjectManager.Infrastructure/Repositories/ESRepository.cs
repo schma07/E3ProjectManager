@@ -22,7 +22,7 @@ namespace Schma.E3ProjectManager.Infrastructure
         private readonly IEventStore _eventStore;
         private readonly IEventStoreSnapshotProvider _snapshotService;
         private readonly IRetroactiveEventsService _retroEventsService;
-        private const int SNAPSHOT_FREQUENCY = 50; //TODO[CH]: Add this to application configurations
+        private const int SNAPSHOT_FREQUENCY = 50; //TODO: Add this to application configurations
 
         public ESRepository(ILogger<ESRepository<T, TId>> logger, IEventStore eventStore, IEventStoreSnapshotProvider snapshotProvider, IRetroactiveEventsService retroEventsService)
         {

@@ -24,7 +24,7 @@ namespace Schma.E3ProjectManager.Core.Domain.Entities.ProjectAggregate
         {
             RaiseEvent(new ProjectCreatedEvent(trackingNumber));
         }
-        //ToDo: Parameter für Konstruktor anpassen; Validierung erweitern und anpassen; nur das nötigste für Test angepasst.
+        
         public void AddProjectDevice(string supplierArticleNumber, string deviceName, string deviceLocation, string deviceFunction, int quantity)
         {
             Guard.Against.NegativeOrZero(quantity, nameof(quantity), "Device quantity cannot be 0 or negative");
