@@ -23,6 +23,7 @@
   <ItemGroup>
     <Folder Include="Commands\Devices\" />
     <Folder Include="Commands\Projects\" />
+    <Folder Include="Queries\Projects\" />
   </ItemGroup>
 
 </Project>
