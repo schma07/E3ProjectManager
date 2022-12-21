@@ -6,6 +6,7 @@ using Schma.E3ProjectManager.Core.Application.Commands;
 using Schma.E3ProjectManager.Core.Application.Mappings;
 using Schma.E3ProjectManager.Core.Application.Queries;
 using Schma.E3ProjectManager.Core.Application.Queries.Orders;
+using Schma.E3ProjectManager.Core.Application.Queries.Projects;
 
 namespace Schma.E3ProjectManager.Core.Application.Extensions
 {

@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Commands\Devices\" />
-    <Folder Include="Commands\Projects\" />
   </ItemGroup>
 
 </Project>
