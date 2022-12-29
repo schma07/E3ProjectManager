@@ -17,11 +17,11 @@ namespace Schma.Data.Abstractions
         /// <summary>
         /// The user who created the entity
         /// </summary>
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
 
         /// <summary>
         /// The user who last modified the entity
         /// </summary>
-        public string ModifiedBy { get; set; }
+        public string? ModifiedBy { get; set; }
     }
 }

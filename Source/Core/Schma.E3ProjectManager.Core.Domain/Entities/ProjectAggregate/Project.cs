@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using Schma.Domain.Abstractions;
-using Schma.E3ProjectManager.Core.Domain.Entities.OrderAggregate;
 
 namespace Schma.E3ProjectManager.Core.Domain.Entities.ProjectAggregate
 {
@@ -19,6 +16,8 @@ namespace Schma.E3ProjectManager.Core.Domain.Entities.ProjectAggregate
         public IReadOnlyCollection<ProjectDevice> ProjectDevices { get { return _projectDevices.AsReadOnly(); } private set { _projectDevices = value.ToList(); } }
         
         public string TrackingNumber { get; private set; }
+        public string ProjectName { get; private set; }
+        public string CustomerName { get; private set; }
 
         public Project(string trackingNumber)
         {

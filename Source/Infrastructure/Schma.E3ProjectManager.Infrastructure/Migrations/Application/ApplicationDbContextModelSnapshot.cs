@@ -17,10 +17,10 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.8")
+                .HasAnnotation("ProductVersion", "7.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Auditing.AuditHistory", b =>
                 {
@@ -28,7 +28,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Changed")
                         .HasColumnType("nvarchar(max)");
@@ -175,6 +175,85 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                     b.ToTable("OrderItems", "Domain");
                 });
 
+            modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Models.ProjectDeviceEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeviceFunction")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DeviceLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DeviceName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SupplierArticleNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("ProjectDevices", "Domain");
+                });
+
+            modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Models.ProjectEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProjectName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrackingNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Projects", "Domain");
+                });
+
             modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Models.OrderItemEntity", b =>
                 {
                     b.HasOne("Schma.E3ProjectManager.Infrastructure.Models.OrderEntity", "Order")
@@ -186,9 +265,25 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                     b.Navigation("Order");
                 });
 
+            modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Models.ProjectDeviceEntity", b =>
+                {
+                    b.HasOne("Schma.E3ProjectManager.Infrastructure.Models.ProjectEntity", "Project")
+                        .WithMany("ProjectDevices")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Models.OrderEntity", b =>
                 {
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Models.ProjectEntity", b =>
+                {
+                    b.Navigation("ProjectDevices");
                 });
 #pragma warning restore 612, 618
         }

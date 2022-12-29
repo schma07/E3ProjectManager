@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
 {
+    /// <inheritdoc />
     public partial class init : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
@@ -80,6 +82,25 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                 });
 
             migrationBuilder.CreateTable(
+                name: "Projects",
+                schema: "Domain",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TrackingNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProjectName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrderItems",
                 schema: "Domain",
                 columns: table => new
@@ -106,13 +127,49 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ProjectDevices",
+                schema: "Domain",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ProjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SupplierArticleNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DeviceName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DeviceLocation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DeviceFunction = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectDevices", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProjectDevices_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalSchema: "Domain",
+                        principalTable: "Projects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_OrderId",
                 schema: "Domain",
                 table: "OrderItems",
                 column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProjectDevices_ProjectId",
+                schema: "Domain",
+                table: "ProjectDevices",
+                column: "ProjectId");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
@@ -128,7 +185,15 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                 schema: "Domain");
 
             migrationBuilder.DropTable(
+                name: "ProjectDevices",
+                schema: "Domain");
+
+            migrationBuilder.DropTable(
                 name: "Orders",
+                schema: "Domain");
+
+            migrationBuilder.DropTable(
+                name: "Projects",
                 schema: "Domain");
         }
     }

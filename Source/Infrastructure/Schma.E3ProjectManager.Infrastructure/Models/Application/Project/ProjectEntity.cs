@@ -20,10 +20,10 @@ namespace Schma.E3ProjectManager.Infrastructure.Models
         /// <summary>
         /// The project's name
         /// </summary>
-        public string ProjectName { get; set; }        
+        public string ProjectName { get; set; }
 
         /// <summary>
-        /// Address country
+        /// The project's customer
         /// </summary>
         public string CustomerName { get; set; }
 

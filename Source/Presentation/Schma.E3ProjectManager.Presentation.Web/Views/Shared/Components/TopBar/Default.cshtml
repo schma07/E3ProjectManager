@@ -22,16 +22,7 @@
 
         <div class="d-flex">
             <div class="dropdown d-none d-lg-inline-block ml-1">
-                <button type="button" class="btn header-item noti-
-
-
-
-
-
-
-
-
-waves-effect" data-toggle="fullscreen">
+                <button type="button" class="btn header-item noti-waves-effect" data-toggle="fullscreen">
                     <i class="bx bx-fullscreen"></i>
                 </button>
             </div>
@@ -63,8 +54,13 @@ waves-effect" data-toggle="fullscreen">
             <div class="collapse navbar-collapse" id="topnav-menu-content">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link" asp-controller="Orders" asp-action="Index" id="topnav-users" role="button">
-                            <i class="fas fa-user mr-2"></i><span key="t-orders">Orders</span>
+                        <a class="nav-link" asp-controller="Orders" asp-action="Index" id="topnav-orders" role="button">
+                            <i class="fas fa-mail-bulk mr-2"></i><span key="t-orders">Orders</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" asp-controller="Projects" asp-action="Index" id="topnav-project" role="button">
+                            <i class="fas fa-project-diagram mr-2"></i><span key="t-projects">Projects</span>
                         </a>
                     </li>
                     @if (Model.IsAdmin)

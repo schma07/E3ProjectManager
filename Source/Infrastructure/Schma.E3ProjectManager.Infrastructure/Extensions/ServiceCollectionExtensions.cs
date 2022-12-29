@@ -26,7 +26,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             services.AddEventStoreEFCore((o) =>
             {
                 o.UseInMemoryDatabase = configuration.GetValue<bool>("UseInMemoryDatabase");
-                o.ConnectionStringSQL = configuration.GetConnectionString(configuration["ApplicationConnection"]);
+                o.ConnectionStringSQL = configuration.GetConnectionString("ApplicationConnection");
             });
             services.AddScoped<OrderAddressResolver>();
             services.AddAutoMapper(config =>
@@ -58,8 +58,8 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             }
             else
             {
-                services.AddDbContext<IdentityDbContext>(options => options.UseSqlServer(configuration["IdentityConnection"]));
-                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration["ApplicationConnection"]));                
+                services.AddDbContext<IdentityDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("IdentityConnection")));
+                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ApplicationConnection")));                
             }
             services.AddScoped<IDbInitializerService, DbInitializerService>();
         }
