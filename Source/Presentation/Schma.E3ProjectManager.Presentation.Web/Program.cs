@@ -56,11 +56,18 @@ namespace Schma.E3ProjectManager.Presentation.Web
                 .ConfigureAppConfiguration((context, config) =>
                 {
                     var builtConfig = config.Build();
-                    if (!context.HostingEnvironment.IsDevelopment())
-                    {
 
-                        if (!context.HostingEnvironment.IsEnvironment("azurecontainerproduction"))
-                        {
+                    switch ($"{context.HostingEnvironment}")
+                    {
+                        case "Development":
+
+                            break;
+
+                        case "dockerdevelopment":
+
+                            break;
+
+                        case "azurecontainerstage":
                             string keyVaultUrl = builtConfig["AzureKeyVault:Endpoint"];
                             string tenantId = builtConfig["AzureKeyVault:TenantId"];
                             string clientId = builtConfig["AzureKeyVault:ClientId"];
@@ -70,14 +77,35 @@ namespace Schma.E3ProjectManager.Presentation.Web
 
                             var secretClient = new SecretClient(new Uri(keyVaultUrl), credential);
                             config.AddAzureKeyVault(secretClient, new AzureKeyVaultConfigurationOptions());
-                        }
-                        else
-                        {
-                            string keyVaultUrl = builtConfig["AzureKeyVaultEndpoint"];
-                            var serviceClient = new SecretClient(new Uri(keyVaultUrl), new DefaultAzureCredential());
-                        }
+                            break;
 
+                        case "azurecontainerproduction":
+                            string keyVaultUrlProduction = builtConfig["AzureKeyVaultEndpoint"];
+                            var serviceClient = new SecretClient(new Uri(keyVaultUrlProduction), new DefaultAzureCredential());
+                            break;                        
                     }
+                    //if (!context.HostingEnvironment.IsDevelopment())
+                    //{
+
+                    //    if (!context.HostingEnvironment.IsEnvironment("azurecontainerproduction"))
+                    //    {
+                    //        string keyVaultUrl = builtConfig["AzureKeyVault:Endpoint"];
+                    //        string tenantId = builtConfig["AzureKeyVault:TenantId"];
+                    //        string clientId = builtConfig["AzureKeyVault:ClientId"];
+                    //        string clientSecretId = builtConfig["AzureKeyVault:ClientSecretId"];
+
+                    //        var credential = new ClientSecretCredential(tenantId, clientId, clientSecretId);
+
+                    //        var secretClient = new SecretClient(new Uri(keyVaultUrl), credential);
+                    //        config.AddAzureKeyVault(secretClient, new AzureKeyVaultConfigurationOptions());
+                    //    }
+                    //    else
+                    //    {
+                    //        string keyVaultUrl = builtConfig["AzureKeyVaultEndpoint"];
+                    //        var serviceClient = new SecretClient(new Uri(keyVaultUrl), new DefaultAzureCredential());
+                    //    }
+
+                    //}
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

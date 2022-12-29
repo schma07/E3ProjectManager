@@ -6,6 +6,7 @@ using Schma.E3ProjectManager.Core.Application.Commands;
 using Schma.E3ProjectManager.Core.Application.Mappings;
 using Schma.E3ProjectManager.Core.Application.Queries;
 using Schma.E3ProjectManager.Core.Application.Queries.Orders;
+using Schma.E3ProjectManager.Core.Application.Queries.Projects;
 
 namespace Schma.E3ProjectManager.Core.Application.Extensions
 {
@@ -21,6 +22,7 @@ namespace Schma.E3ProjectManager.Core.Application.Extensions
                 config.ConstructServicesUsing(t => services.BuildServiceProvider().GetRequiredService(t));
                 config.AddProfile<UserProfile>();
                 config.AddProfile<OrderProfile>();
+                config.AddProfile<ProjectProfile>();
             });
             services.AddMediator(x =>
             {
@@ -37,6 +39,7 @@ namespace Schma.E3ProjectManager.Core.Application.Extensions
                 x.AddConsumer<UpdateUserRolesCommandHandler>();
                 x.AddConsumer<UpdateUserDetailsCommandHandler>();
                 x.AddConsumer<CreateNewOrderCommandHandler>();
+                x.AddConsumer<CreateNewProjectCommandHandler>();                
 
                 #endregion User
 
@@ -48,7 +51,8 @@ namespace Schma.E3ProjectManager.Core.Application.Extensions
                 x.AddConsumer<GetUserQueryHandler>();
                 x.AddConsumer<GetAllOrdersQueryHandler>();
                 x.AddConsumer<GetOrderByIdQueryHandler>();
-
+                x.AddConsumer<GetAllProjectsQueryHandler>();
+                x.AddConsumer<GetProjectByIdQueryHandler>();
                 #endregion
             });
 

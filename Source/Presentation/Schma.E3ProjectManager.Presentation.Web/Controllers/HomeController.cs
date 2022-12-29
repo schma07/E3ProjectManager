@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Schma.E3ProjectManager.Presentation.Web.ViewModels;
 
 namespace Schma.E3ProjectManager.Presentation.Web.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class HomeController : Controller
     {
         public async Task<IActionResult> Index()

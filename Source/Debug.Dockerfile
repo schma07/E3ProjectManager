@@ -16,6 +16,13 @@ COPY ["Source/Infrastructure/Schma.E3ProjectManager.Infrastructure.Shared/Schma.
 COPY ["Source/Infrastructure/Schma.E3ProjectManager.Infrastructure/Schma.E3ProjectManager.Infrastructure.csproj", "Infrastructure/Schma.E3ProjectManager.Infrastructure/"]
 COPY ["Source/Infrastructure/Schma.E3ProjectManager.Infrastructure.Auditing/Schma.E3ProjectManager.Infrastructure.Auditing.csproj", "Infrastructure/Schma.E3ProjectManager.Infrastructure.Auditing/"]
 COPY ["Source/Presentation/Schma.E3ProjectManager.Presentation.Framework/Schma.E3ProjectManager.Presentation.Framework.csproj", "Presentation/Schma.E3ProjectManager.Presentation.Framework/"]
+COPY ["Source/Common/Schma.Data.Abstractions/Schma.Data.Abstractions.csproj", "Common/Schma.Data.Abstractions/"]
+COPY ["Source/Common/Schma.Domain.Abstractions/Schma.Domain.Abstractions.csproj", "Common/Schma.Domain.Abstractions/"]
+COPY ["Source/Common/Schma.EventStore.Abstractions/Schma.EventStore.Abstractions.csproj", "Common/Schma.EventStore.Abstractions/"]
+COPY ["Source/Common/Schma.EventStore.EntityFramework/Schma.EventStore.EntityFramework.csproj", "Common/Schma.EventStore.EntityFramework/"]
+COPY ["Source/Common/Schma.Messaging.Abstractions/Schma.Messaging.Abstractions.csproj", "Common/Schma.Messaging.Abstractions/"]
+
+
 RUN dotnet restore "Presentation/Schma.E3ProjectManager.Presentation.Web/Schma.E3ProjectManager.Presentation.Web.csproj"
 COPY . .
 WORKDIR "/src/Source/Presentation/Schma.E3ProjectManager.Presentation.Web"

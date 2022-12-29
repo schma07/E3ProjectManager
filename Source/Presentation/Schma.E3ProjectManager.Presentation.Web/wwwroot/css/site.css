@@ -9,14 +9,47 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-    color: #0366d6;
+    color: #009988;
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: #009988;
+    border-color: #009988;
 }
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #009282;
+        border-color: #00826b;
+    }
+
+    .btn-primary:focus, .btn-primary.focus {
+        color: #fff;
+        background-color: #009282;
+        border-color: #00826b;
+        -webkit-box-shadow: 0 0 0 0.15rem rgba(0, 180, 136, 0.5);
+        box-shadow: 0 0 0 0.15rem rgba(0, 180, 136, 0.5);
+    }
+
+    .btn-primary.disabled, .btn-primary:disabled {
+        color: #fff;
+        background-color: #009988;
+        border-color: #009988;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+    .show > .btn-primary.dropdown-toggle {
+        color: #fff;
+        background-color: #00826b;
+        border-color: #006e5a;
+    }
+
+        .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-primary.dropdown-toggle:focus {
+            -webkit-box-shadow: 0 0 0 0.15rem rgba(0, 180, 136, 0.5);
+            box-shadow: 0 0 0 0.15rem rgba(0, 180, 136, 0.5);
+        }
+    
 
 /* Sticky footer styles
 -------------------------------------------------- */

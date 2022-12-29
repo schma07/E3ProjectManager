@@ -66,15 +66,15 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3C0BD40F-7EB0-4A43-A011-4E4801A5823A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schma.Domain.Abstractions", "Source\Common\Schma.Domain.Abstractions\Schma.Domain.Abstractions.csproj", "{8A4C087D-B99C-497D-AD1B-32DB7021B874}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schma.Domain.Abstractions", "Source\Common\Schma.Domain.Abstractions\Schma.Domain.Abstractions.csproj", "{8A4C087D-B99C-497D-AD1B-32DB7021B874}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schma.EventStore.Abstractions", "Source\Common\Schma.EventStore.Abstractions\Schma.EventStore.Abstractions.csproj", "{6C2F4505-DB93-4DC1-8F7E-B7AC75ACCB9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schma.EventStore.Abstractions", "Source\Common\Schma.EventStore.Abstractions\Schma.EventStore.Abstractions.csproj", "{6C2F4505-DB93-4DC1-8F7E-B7AC75ACCB9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schma.EventStore.EntityFramework", "Source\Common\Schma.EventStore.EntityFramework\Schma.EventStore.EntityFramework.csproj", "{B60EBD6E-D4FB-475D-B91F-A8D48144C947}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schma.EventStore.EntityFramework", "Source\Common\Schma.EventStore.EntityFramework\Schma.EventStore.EntityFramework.csproj", "{B60EBD6E-D4FB-475D-B91F-A8D48144C947}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schma.Data.Abstractions", "Source\Common\Schma.Data.Abstractions\Schma.Data.Abstractions.csproj", "{8939EA87-7E5B-4145-9CA5-014B90A5407C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schma.Messaging.Abstractions", "Source\Common\Schma.Messaging.Abstractions\Schma.Messaging.Abstractions.csproj", "{AB70D6F3-7604-408C-8F0A-FCEFEF1565B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schma.Messaging.Abstractions", "Source\Common\Schma.Messaging.Abstractions\Schma.Messaging.Abstractions.csproj", "{AB70D6F3-7604-408C-8F0A-FCEFEF1565B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,7 +131,6 @@ Global
 		{4CF26077-AE2E-4C9F-A193-771CD2592228}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CF26077-AE2E-4C9F-A193-771CD2592228}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57C197FC-2818-4EDD-A5F8-156D773C3258}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{57C197FC-2818-4EDD-A5F8-156D773C3258}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{57C197FC-2818-4EDD-A5F8-156D773C3258}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A4C087D-B99C-497D-AD1B-32DB7021B874}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8A4C087D-B99C-497D-AD1B-32DB7021B874}.Debug|Any CPU.Build.0 = Debug|Any CPU

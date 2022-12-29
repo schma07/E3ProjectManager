@@ -11,9 +11,8 @@ using Schma.E3ProjectManager.Infrastructure.Mappings;
 using Schma.E3ProjectManager.Infrastructure.Models;
 using Schma.E3ProjectManager.Infrastructure.Repositories;
 using Schma.E3ProjectManager.Infrastructure.Services;
-using Schma.Messaging.Abstractions;
 using Schma.EventStore.EntityFramework.Extensions;
-using Schma.EventStore.Abstractions;
+using Schma.Messaging.Abstractions;
 
 namespace Schma.E3ProjectManager.Infrastructure.Extensions
 {
@@ -27,7 +26,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             services.AddEventStoreEFCore((o) =>
             {
                 o.UseInMemoryDatabase = configuration.GetValue<bool>("UseInMemoryDatabase");
-                o.ConnectionStringSQL = configuration.GetConnectionString(configuration["ApplicationConnection"]);
+                o.ConnectionStringSQL = configuration.GetConnectionString("ApplicationConnection");
             });
             services.AddScoped<OrderAddressResolver>();
             services.AddAutoMapper(config =>
@@ -59,8 +58,8 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             }
             else
             {
-                services.AddDbContext<IdentityDbContext>(options => options.UseSqlServer(configuration["IdentityConnection"]));
-                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration["ApplicationConnection"]));                
+                services.AddDbContext<IdentityDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("IdentityConnection")));
+                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ApplicationConnection")));                
             }
             services.AddScoped<IDbInitializerService, DbInitializerService>();
         }
@@ -70,6 +69,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             services.AddScoped(typeof(IEntityRepository<,>), typeof(DataEntityRepository<,>));
             services.AddScoped(typeof(IESRepository<,>), typeof(ESRepository<,>));
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
         }
 
         private static void AddIdentity(this IServiceCollection services)

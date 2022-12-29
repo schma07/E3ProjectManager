@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Schma.E3ProjectManager.Core.Domain\Schma.E3ProjectManager.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\Devices\" />
+  </ItemGroup>
+
 </Project>

@@ -3,6 +3,12 @@
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
+            <div>
+                <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light" data-toggle="collapse" data-target="#topnav-menu-content">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+            </div>
+
             <div class="navbar-brand-box">
                 <a asp-controller="Home" asp-action="Index" class="logo logo-light">
                     <img src="~/assets/images/pantecautomation.svg" alt="" height="60">
@@ -12,24 +18,11 @@
                     <img src="~/assets/images/pantecautomation.svg" alt="" height="60">
                 </a>
             </div>
-
-            <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light" data-toggle="collapse" data-target="#topnav-menu-content">
-                <i class="fa fa-fw fa-bars"></i>
-            </button>
         </div>
 
         <div class="d-flex">
             <div class="dropdown d-none d-lg-inline-block ml-1">
-                <button type="button" class="btn header-item noti-
-
-
-
-
-
-
-
-
-waves-effect" data-toggle="fullscreen">
+                <button type="button" class="btn header-item noti-waves-effect" data-toggle="fullscreen">
                     <i class="bx bx-fullscreen"></i>
                 </button>
             </div>
@@ -61,8 +54,13 @@ waves-effect" data-toggle="fullscreen">
             <div class="collapse navbar-collapse" id="topnav-menu-content">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link" asp-controller="Orders" asp-action="Index" id="topnav-users" role="button">
-                            <i class="fas fa-user mr-2"></i><span key="t-orders">Orders</span>
+                        <a class="nav-link" asp-controller="Orders" asp-action="Index" id="topnav-orders" role="button">
+                            <i class="fas fa-mail-bulk mr-2"></i><span key="t-orders">Orders</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" asp-controller="Projects" asp-action="Index" id="topnav-project" role="button">
+                            <i class="fas fa-project-diagram mr-2"></i><span key="t-projects">Projects</span>
                         </a>
                     </li>
                     @if (Model.IsAdmin)
@@ -90,8 +88,8 @@ waves-effect" data-toggle="fullscreen">
 </div>
 
 <script>
-    $(document).ready(function() {
-        $('#logoutLink').click(function() {
+    $(document).ready(function () {
+        $('#logoutLink').click(function () {
             document.logoutForm.submit(); return false;
         }).show();
     });

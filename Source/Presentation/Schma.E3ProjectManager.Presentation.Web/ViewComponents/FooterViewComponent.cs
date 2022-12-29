@@ -13,7 +13,7 @@ namespace Schma.E3ProjectManager.Presentation.Web.ViewComponents
         {
             FooterViewModel model = new FooterViewModel();
             model.Date = DateTime.Now;
-            model.Version = Assembly.GetEntryAssembly().GetName().Version.ToString(); //TODO[CH]: Get proper version here
+            model.Version = Assembly.GetEntryAssembly().GetName().Version.ToString(); //TODO: Get proper version here
             return View(model);
         }
     }
