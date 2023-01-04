@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Schma.E3ProjectManager.Core.Application.Mappings;
 using Schma.E3ProjectManager.Core.Domain;
+using Schma.E3ProjectManager.Core.Domain.Entities.CustomerAggregate;
 using Schma.E3ProjectManager.Core.Domain.Entities.OrderAggregate;
 using Schma.E3ProjectManager.Core.Domain.Entities.ProjectAggregate;
 using Schma.E3ProjectManager.Infrastructure.Models;
@@ -26,7 +27,11 @@ namespace Schma.E3ProjectManager.Infrastructure.Mappings
                 .ForMember(target => target.Address, opt => opt.MapFrom(source => new Address() { City = source.AddressCity, Country = source.AddressCountry, Line1 = source.AddressLine1, Line2 = source.AddressLine2, Postcode = source.AddressPostcode }));
 
             CreateMap<ProjectEntity, Project>();
+            CreateMap<Project, ProjectEntity>();
             CreateMap<ProjectDevice, ProjectDeviceEntity>().ReverseMap();
+
+            CreateMap<CustomerEntity, Customer>();
+            CreateMap<Customer, CustomerEntity>();            
         }
     }
 }

@@ -21,6 +21,8 @@ namespace Schma.E3ProjectManager.Infrastructure.DbContexts
         public DbSet<OrderEntity> Orders { get; set; }
         public DbSet<OrderItemEntity> OrderItems { get; set; }
 
+        public DbSet<CustomerEntity> CustomerEntities { get; set; }
+
         public DbSet<ProjectEntity> ProjectEntities { get; set; }
         public DbSet<ProjectDeviceEntity> ProjectDevices { get; set; }
 
@@ -66,11 +68,21 @@ namespace Schma.E3ProjectManager.Infrastructure.DbContexts
                 oi.Property(oi => oi.ProductPrice).IsRequired();
             });
 
+            //Customers
+            builder.Entity<CustomerEntity>().ToTable("Customers", DOMAIN_SCHEMA);
+            builder.Entity<CustomerEntity>(c =>
+            {
+                c.HasMany(c => c.Projects).WithOne(p => p.Customer).HasForeignKey(c => c.CustomerId).OnDelete(DeleteBehavior.Cascade);
+            });
+
             //Projects
             builder.Entity<ProjectEntity>().ToTable("Projects", DOMAIN_SCHEMA);
-            builder.Entity<ProjectEntity>(o =>
+            builder.Entity<ProjectEntity>(p =>
             {
-                o.HasMany(o => o.ProjectDevices).WithOne(oi => oi.Project).HasForeignKey(o => o.ProjectId).OnDelete(DeleteBehavior.Cascade);
+                
+                p.HasMany(p => p.ProjectDevices).WithOne(pd => pd.Project).HasForeignKey(p => p.ProjectId).OnDelete(DeleteBehavior.Cascade);
+              // TODO: Add CustomerID as required when customer is complete 
+
             });
 
             //Project Devices

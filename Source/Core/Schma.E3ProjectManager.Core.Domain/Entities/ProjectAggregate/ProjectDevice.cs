@@ -14,9 +14,9 @@ namespace Schma.E3ProjectManager.Core.Domain.Entities.ProjectAggregate
         public string DeviceName { get; private set; }
         public string DeviceLocation { get; private set; }
         public string DeviceFunction { get; private set; }
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
 
-        public ProjectDevice(string supplierArticleNumber, string deviceName, string deviceLocation, string deviceFunction, int quantity)
+        public ProjectDevice(string supplierArticleNumber, string deviceName, string deviceLocation, string deviceFunction, decimal quantity)
         {
             SupplierArticleNumber = supplierArticleNumber;
             DeviceName = deviceName;
@@ -26,7 +26,7 @@ namespace Schma.E3ProjectManager.Core.Domain.Entities.ProjectAggregate
         }
 
 
-        internal void UpdateQuantity(int quantity)
+        internal void UpdateQuantity(decimal quantity)
         {
             Quantity = quantity;
         }

@@ -59,6 +59,23 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                 });
 
             migrationBuilder.CreateTable(
+                name: "Customers",
+                schema: "Domain",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 schema: "Domain",
                 columns: table => new
@@ -87,9 +104,10 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     TrackingNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProjectName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -98,6 +116,13 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Projects", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Projects_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalSchema: "Domain",
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -167,6 +192,12 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                 schema: "Domain",
                 table: "ProjectDevices",
                 column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_CustomerId",
+                schema: "Domain",
+                table: "Projects",
+                column: "CustomerId");
         }
 
         /// <inheritdoc />
@@ -183,7 +214,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
             migrationBuilder.DropTable(
                 name: "OrderItems",
                 schema: "Domain");
-
+            
             migrationBuilder.DropTable(
                 name: "ProjectDevices",
                 schema: "Domain");
@@ -194,6 +225,10 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
 
             migrationBuilder.DropTable(
                 name: "Projects",
+                schema: "Domain");
+
+            migrationBuilder.DropTable(
+                name: "Customers",
                 schema: "Domain");
         }
     }

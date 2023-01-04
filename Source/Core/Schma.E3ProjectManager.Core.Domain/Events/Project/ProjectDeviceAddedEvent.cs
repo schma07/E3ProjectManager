@@ -9,7 +9,7 @@ namespace Schma.E3ProjectManager.Core.Domain
         public string DeviceName { get; private set; }
         public string DeviceLocation { get; private set; }
         public string DeviceFunction { get; private set; }
-        public int Quantity { get; private set; }
+        public decimal Quantity { get; private set; }
 
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace Schma.E3ProjectManager.Core.Domain
         {
         }
 
-        public ProjectDeviceAddedEvent(string supplierArticleNumber, string deviceName, string deviceLocation, string deviceFunction, int quantity)
+        public ProjectDeviceAddedEvent(string supplierArticleNumber, string deviceName, string deviceLocation, string deviceFunction, decimal quantity)
         {
             SupplierArticleNumber = supplierArticleNumber;
             DeviceName = deviceName;
@@ -28,7 +28,7 @@ namespace Schma.E3ProjectManager.Core.Domain
             Quantity = quantity;
         }
 
-        public ProjectDeviceAddedEvent(Guid aggregateId, int aggregateVersion, string supplierArticleNumber, string deviceName, string deviceLocation, string deviceFunction, int quantity)
+        public ProjectDeviceAddedEvent(Guid aggregateId, int aggregateVersion, string supplierArticleNumber, string deviceName, string deviceLocation, string deviceFunction, decimal quantity)
             : base(aggregateId, aggregateVersion)
         {
             SupplierArticleNumber = supplierArticleNumber;

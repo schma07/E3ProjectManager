@@ -6,8 +6,11 @@
 
   <ItemGroup>
     <Compile Remove="Entities\ContactAggregate\**" />
+    <Compile Remove="Entities\DeviceAggregate\**" />
     <EmbeddedResource Remove="Entities\ContactAggregate\**" />
+    <EmbeddedResource Remove="Entities\DeviceAggregate\**" />
     <None Remove="Entities\ContactAggregate\**" />
+    <None Remove="Entities\DeviceAggregate\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\DeviceAggregate\" />
     <Folder Include="Events\Device\" />
   </ItemGroup>
 

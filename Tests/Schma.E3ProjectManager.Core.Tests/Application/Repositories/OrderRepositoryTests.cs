@@ -30,7 +30,7 @@ namespace Schma.E3ProjectManager.Core.Tests.Application.Repositories
             var events = await _eventStore.LoadAsync(order.Id, nameof(Order), 0, 1);
 
             Assert.NotEmpty(events);
-            Assert.IsType<ProjectCreatedEvent>(events.Single());
+            Assert.IsType<OrderCreatedEvent>(events.Single());
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace Schma.E3ProjectManager.Core.Tests.Application.Repositories
 
             var events = await _eventStore.LoadAsync(order.Id, nameof(Order), 0, 1);
 
-            Assert.Equal(trackingNumber, ((ProjectCreatedEvent)events.Single()).TrackingNumber);
+            Assert.Equal(trackingNumber, ((OrderCreatedEvent)events.Single()).TrackingNumber);
         }
 
         [Fact]

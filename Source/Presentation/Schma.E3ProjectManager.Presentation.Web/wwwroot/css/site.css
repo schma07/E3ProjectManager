@@ -11,7 +11,10 @@ a.navbar-brand {
 a {
     color: #009988;
 }
-
+.bg-soft-primary {
+    background-color: rgba(0, 153, 136, 0.25) !important;
+}
+/* Button primary */
 .btn-primary {
     color: #fff;
     background-color: #009988;
@@ -49,7 +52,19 @@ a {
             -webkit-box-shadow: 0 0 0 0.15rem rgba(0, 180, 136, 0.5);
             box-shadow: 0 0 0 0.15rem rgba(0, 180, 136, 0.5);
         }
-    
+/* Button */
+.btn:focus, .btn.focus {
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.15rem rgba(0, 180, 136, 0.5);
+    box-shadow: 0 0 0 0.15rem rgba(0, 180, 136, 0.5);
+}
+
+/* Nav pills button ( used in user profile) */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #009988;
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */

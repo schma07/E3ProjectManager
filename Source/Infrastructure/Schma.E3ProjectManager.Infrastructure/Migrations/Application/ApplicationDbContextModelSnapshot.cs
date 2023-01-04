@@ -93,6 +93,32 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                     b.ToTable("ApplicationConfigurations", "Config");
                 });
 
+            modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Models.CustomerEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers", "Domain");
+                });
+
             modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Models.OrderEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -231,8 +257,8 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CustomerName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid?>("CustomerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -240,16 +266,21 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                     b.Property<DateTime>("DateModified")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProjectName")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TrackingNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Projects", "Domain");
                 });
@@ -274,6 +305,21 @@ namespace Schma.E3ProjectManager.Infrastructure.Migrations.Application
                         .IsRequired();
 
                     b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Models.ProjectEntity", b =>
+                {
+                    b.HasOne("Schma.E3ProjectManager.Infrastructure.Models.CustomerEntity", "Customer")
+                        .WithMany("Projects")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Models.CustomerEntity", b =>
+                {
+                    b.Navigation("Projects");
                 });
 
             modelBuilder.Entity("Schma.E3ProjectManager.Infrastructure.Models.OrderEntity", b =>

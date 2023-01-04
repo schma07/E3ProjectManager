@@ -23,6 +23,7 @@ namespace Schma.E3ProjectManager.Core.Application.Extensions
                 config.AddProfile<UserProfile>();
                 config.AddProfile<OrderProfile>();
                 config.AddProfile<ProjectProfile>();
+                config.AddProfile<CustomerProfile>();
             });
             services.AddMediator(x =>
             {
@@ -38,10 +39,23 @@ namespace Schma.E3ProjectManager.Core.Application.Extensions
                 x.AddConsumer<ChangeUserPasswordCommandHandler>();
                 x.AddConsumer<UpdateUserRolesCommandHandler>();
                 x.AddConsumer<UpdateUserDetailsCommandHandler>();
-                x.AddConsumer<CreateNewOrderCommandHandler>();
-                x.AddConsumer<CreateNewProjectCommandHandler>();                
 
                 #endregion User
+
+                #region Order
+                x.AddConsumer<CreateNewOrderCommandHandler>();
+
+                #endregion Order
+
+                #region Project
+                x.AddConsumer<CreateNewProjectCommandHandler>();
+
+                #endregion Project
+
+                #region Customer
+                x.AddConsumer<CreateNewCustomerCommandHandler>();
+
+                #endregion Customer
 
                 #endregion Commands
 

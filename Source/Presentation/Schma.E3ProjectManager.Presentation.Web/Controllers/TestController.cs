@@ -47,5 +47,31 @@ namespace Schma.E3ProjectManager.Presentation.Web.Controllers
                 return NotFound($"{string.Join(',', result.Errors)}");
             }
         }
+        [Route("CreateProject")]
+        public async Task<IActionResult> CreateProject()
+        {
+            Result result = await _serviceBus.SendAsync(new CreateNewProjectCommand("TRACKING NUMBER HERE"));
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return NotFound($"{string.Join(',', result.Errors)}");
+            }
+        }
+        [Route("CreateCustomer")]
+        public async Task<IActionResult> CreateCustomer()
+        {
+            Result result = await _serviceBus.SendAsync(new CreateNewCustomerCommand("CUSTOMER NAME HERE"));
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return NotFound($"{string.Join(',', result.Errors)}");
+            }
+        }
     }
 }

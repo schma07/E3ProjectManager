@@ -12,25 +12,26 @@ namespace Schma.E3ProjectManager.Core.Domain.Entities.ProjectAggregate
          IDomainEventHandler<ProjectDeviceQuantityUpdatedEvent>
     {
         private List<ProjectDevice> _projectDevices = new List<ProjectDevice>();
-                
-        public IReadOnlyCollection<ProjectDevice> ProjectDevices { get { return _projectDevices.AsReadOnly(); } private set { _projectDevices = value.ToList(); } }
-        
+                        
         public string TrackingNumber { get; private set; }
-        public string ProjectName { get; private set; }
+        public string Name { get; private set; }
         public string CustomerName { get; private set; }
+        public bool IsActive { get; private set; }
+
+        public IReadOnlyCollection<ProjectDevice> ProjectDevices { get { return _projectDevices.AsReadOnly(); } private set { _projectDevices = value.ToList(); } }
 
         public Project(string trackingNumber)
         {
             RaiseEvent(new ProjectCreatedEvent(trackingNumber));
         }
         
-        public void AddProjectDevice(string supplierArticleNumber, string deviceName, string deviceLocation, string deviceFunction, int quantity)
+        public void AddProjectDevice(string supplierArticleNumber, string deviceName, string deviceLocation, string deviceFunction, decimal quantity)
         {
             Guard.Against.NegativeOrZero(quantity, nameof(quantity), "Device quantity cannot be 0 or negative");
             RaiseEvent(new ProjectDeviceAddedEvent(supplierArticleNumber, deviceName, deviceLocation, deviceFunction, quantity));
         }
 
-        public void UpdateProjectDeviceQuantity(Guid projectDeviceId, int quantity)
+        public void UpdateProjectDeviceQuantity(Guid projectDeviceId, decimal quantity)
         {
             Guard.Against.NegativeOrZero(quantity, nameof(quantity), "Device quantity cannot be 0 or negative");
             RaiseEvent(new ProjectDeviceQuantityUpdatedEvent(projectDeviceId, quantity));
@@ -38,7 +39,7 @@ namespace Schma.E3ProjectManager.Core.Domain.Entities.ProjectAggregate
 
         void IDomainEventHandler<ProjectCreatedEvent>.Apply(ProjectCreatedEvent @event)
         {
-            Id = @event.AggregateId;
+            Id = @event.AggregateId;            
             TrackingNumber = @event.TrackingNumber;
         }
 

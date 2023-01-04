@@ -28,7 +28,7 @@ namespace Schma.E3ProjectManager.Presentation.Web.Controllers
             var projects = await _serviceBus.SendAsync(new GetAllProjectsQuery());
 
             model.Projects = projects.Data
-                .Select(p => new ProjectViewModel() { ProjectName = p.ProjectName, ProjectDevices = p.ProjectDevices, TrackingNumber = p.TrackingNumber })
+                .Select(p => new ProjectViewModel() { Id = p.Id, CustomerName = p.CustomerName, ProjectName = p.ProjectName, ProjectDevices = p.ProjectDevices, TrackingNumber = p.TrackingNumber })
                 .ToList();
 
             return View(model);

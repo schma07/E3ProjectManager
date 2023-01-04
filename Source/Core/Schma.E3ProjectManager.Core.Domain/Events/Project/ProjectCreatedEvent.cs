@@ -27,7 +27,7 @@ namespace Schma.E3ProjectManager.Core.Domain
 
         public override IDomainEvent<Guid> WithAggregate(Guid aggregateId, int aggregateVersion)
         {
-            return new OrderCreatedEvent(aggregateId, aggregateVersion, TrackingNumber);
+            return new ProjectCreatedEvent(aggregateId, aggregateVersion, TrackingNumber);
         }
     }
 }

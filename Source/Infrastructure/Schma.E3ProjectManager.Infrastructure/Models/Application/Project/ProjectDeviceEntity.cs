@@ -16,7 +16,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Models
         public Guid ProjectId { get; set; }
 
         /// <summary>
-        /// The order item product name
+        /// The project device supplier article number
         /// </summary>
         public string SupplierArticleNumber { get; set; }
 
