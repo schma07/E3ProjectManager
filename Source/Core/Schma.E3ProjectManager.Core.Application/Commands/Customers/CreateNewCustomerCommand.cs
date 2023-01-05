@@ -16,6 +16,7 @@ namespace Schma.E3ProjectManager.Core.Application.Commands
     public class CreateNewCustomerCommandHandler : BaseMessageHandler<CreateNewCustomerCommand, Result>
     
     {
+        // TODO: ICustomerService definieren und CustomerService anlegen
         private readonly ICustomerRepository _customerRepository;
 
         public CreateNewCustomerCommandHandler(ICustomerRepository customerRepository)

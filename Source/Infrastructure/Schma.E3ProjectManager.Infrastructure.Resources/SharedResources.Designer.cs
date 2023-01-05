@@ -70,6 +70,15 @@ namespace Schma.E3ProjectManager.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Customer.
+        /// </summary>
+        public static string Buttons_CreateCustomer {
+            get {
+                return ResourceManager.GetString("Buttons_CreateCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Order.
         /// </summary>
         public static string Buttons_CreateOrder {
@@ -439,6 +448,15 @@ namespace Schma.E3ProjectManager.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer has been created succesfully.
+        /// </summary>
+        public static string Notifications_CustomerCreated_Success {
+            get {
+                return ResourceManager.GetString("Notifications_CustomerCreated_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Notifications_Error {
@@ -529,6 +547,15 @@ namespace Schma.E3ProjectManager.Infrastructure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customers.
+        /// </summary>
+        public static string Titles_Customers {
+            get {
+                return ResourceManager.GetString("Titles_Customers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit User.
         /// </summary>
         public static string Titles_EditUser {
@@ -543,6 +570,15 @@ namespace Schma.E3ProjectManager.Infrastructure.Resources {
         public static string Titles_Login {
             get {
                 return ResourceManager.GetString("Titles_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Customer.
+        /// </summary>
+        public static string Titles_NewCustomer {
+            get {
+                return ResourceManager.GetString("Titles_NewCustomer", resourceCulture);
             }
         }
         

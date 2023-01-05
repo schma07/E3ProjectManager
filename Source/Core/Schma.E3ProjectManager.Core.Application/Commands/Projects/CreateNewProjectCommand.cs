@@ -24,7 +24,7 @@ namespace Schma.E3ProjectManager.Core.Application.Commands
         public override async Task<Result> HandleAsync(CreateNewProjectCommand command)
         {
             var project = new Project(command.TrackingNumber);
-            project.AddProjectDevice("666", "KF100", "F1", "VAC", 1);
+           // project.AddProjectDevice("666", "KF100", "F1", "VAC", 1);
             await _projectRepository.AddAsync(project);
             await _projectRepository.UnitOfWork.SaveChangesAsync();
             await _projectRepository.SaveToEventStoreAsync(project); //saving also to event store

@@ -1,10 +1,16 @@
-﻿namespace Schma.E3ProjectManager.Infrastructure.Resources
+﻿using System;
+using System.Globalization;
+using System.Reflection;
+using System.Resources;
+
+namespace Schma.E3ProjectManager.Infrastructure.Resources
 {
     /// This file is auto generated from ResourceKeys.tt template file
     /// It contains constants for all the keys in SharedResources.resx file
     public static class ResourceKeys
     {
         public const string Buttons_Cancel = "Buttons_Cancel";
+        public const string Buttons_CreateCustomer = "Buttons_CreateCustomer";
         public const string Buttons_CreateOrder = "Buttons_CreateOrder";
         public const string Buttons_CreateUser = "Buttons_CreateUser";
         public const string Buttons_Delete = "Buttons_Delete";
@@ -46,6 +52,7 @@
         public const string Labels_Username = "Labels_Username";
         public const string Labels_Welcome = "Labels_Welcome";
         public const string Navigation_Top_Users = "Navigation_Top_Users";
+        public const string Notifications_CustomerCreated_Success = "Notifications_CustomerCreated_Success";
         public const string Notifications_Error = "Notifications_Error";
         public const string Notifications_PasswordChange_Success = "Notifications_PasswordChange_Success";
         public const string Notifications_Success = "Notifications_Success";
@@ -56,8 +63,10 @@
         public const string Roles_SuperAdmin = "Roles_SuperAdmin";
         public const string Roles_User = "Roles_User";
         public const string Titles_ChangePassword = "Titles_ChangePassword";
+        public const string Titles_Customers = "Titles_Customers";
         public const string Titles_EditUser = "Titles_EditUser";
         public const string Titles_Login = "Titles_Login";
+        public const string Titles_NewCustomer = "Titles_NewCustomer";
         public const string Titles_NewUser = "Titles_NewUser";
         public const string Titles_UserDetails = "Titles_UserDetails";
         public const string Titles_UserProfile = "Titles_UserProfile";

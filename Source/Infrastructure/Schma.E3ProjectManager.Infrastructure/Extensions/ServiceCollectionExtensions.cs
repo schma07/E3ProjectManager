@@ -70,6 +70,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Extensions
             services.AddScoped(typeof(IESRepository<,>), typeof(ESRepository<,>));
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
         }
 
         private static void AddIdentity(this IServiceCollection services)

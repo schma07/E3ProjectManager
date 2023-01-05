@@ -25,7 +25,12 @@ namespace Schma.E3ProjectManager.Infrastructure.Models
         /// <summary>
         /// The project's name
         /// </summary>
-        public string Name { get; set; }        
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The project's name
+        /// </summary>
+        public string Revision { get; set; }
 
         /// <summary>
         /// Flag indicating whether the project is active

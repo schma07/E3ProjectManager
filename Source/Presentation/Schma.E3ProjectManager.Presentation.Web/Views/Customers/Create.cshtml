@@ -1,0 +1,41 @@
+﻿@using Schma.E3ProjectManager.Presentation.Web.ViewModels.Customers
+@model CreateCustomerViewModel
+@{
+    ViewBag.Title = L[ResourceKeys.Titles_NewCustomer];
+    ViewBag.pTitle = L[ResourceKeys.Titles_NewCustomer];
+    ViewBag.pageTitle = L[ResourceKeys.Titles_Customers];
+}
+<partial name="_CrudCss" />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <form asp-controller="Customers" asp-action="Create" method="post">                    
+                    <div class="form-group row mb-4">
+                        <label asp-for="Name" class="col-form-label col-lg-2"></label>
+                        <div class="col-lg-10">
+                            <input asp-for="Name" class="form-control">
+                            <span asp-validation-for="Name"></span>
+                        </div>
+                    </div>                  
+
+                    <div class="row justify-content-end">
+                        <div class="col-lg-10">
+                            <button type="submit" class="btn btn-primary">@L[ResourceKeys.Buttons_CreateCustomer]</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/assets/libs/select2/js/select2.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <partial name="_CrudJS" />
+}
+
+

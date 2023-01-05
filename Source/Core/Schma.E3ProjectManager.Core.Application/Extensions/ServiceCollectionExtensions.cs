@@ -5,6 +5,7 @@ using Schma.E3ProjectManager.Core.Application.Authorization;
 using Schma.E3ProjectManager.Core.Application.Commands;
 using Schma.E3ProjectManager.Core.Application.Mappings;
 using Schma.E3ProjectManager.Core.Application.Queries;
+using Schma.E3ProjectManager.Core.Application.Queries.Customers;
 using Schma.E3ProjectManager.Core.Application.Queries.Orders;
 using Schma.E3ProjectManager.Core.Application.Queries.Projects;
 
@@ -63,10 +64,24 @@ namespace Schma.E3ProjectManager.Core.Application.Extensions
 
                 x.AddConsumer<GetAllUsersQueryHandler>();
                 x.AddConsumer<GetUserQueryHandler>();
+
+                #region Orders
                 x.AddConsumer<GetAllOrdersQueryHandler>();
                 x.AddConsumer<GetOrderByIdQueryHandler>();
+
+                #endregion Orders
+                
+                #region Projects
                 x.AddConsumer<GetAllProjectsQueryHandler>();
                 x.AddConsumer<GetProjectByIdQueryHandler>();
+
+                #endregion Projects
+
+                #region Customers
+
+                x.AddConsumer<GetAllCustomersQueryHandler>();                
+
+                #endregion Customers
                 #endregion
             });
 

@@ -17,7 +17,7 @@ namespace Schma.E3ProjectManager.Core.Domain
         {
         }
 
-        public CustomerCreatedEvent(string name)
+        public CustomerCreatedEvent(string name):base (Guid.NewGuid())
         {
             Name = name;
         }

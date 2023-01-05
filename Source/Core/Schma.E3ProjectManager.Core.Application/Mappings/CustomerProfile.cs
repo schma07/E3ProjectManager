@@ -8,7 +8,8 @@ namespace Schma.E3ProjectManager.Core.Application.Mappings
     {
         public CustomerProfile()
         {
-            CreateMap<Customer, CustomerReadModel>();                      
+            CreateMap<Customer, CustomerReadModel>();
+          
         }
     }
 }

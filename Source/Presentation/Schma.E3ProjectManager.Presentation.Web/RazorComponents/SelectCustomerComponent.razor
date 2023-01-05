@@ -1,0 +1,15 @@
+﻿@inherits BaseComponent
+@using Schma.E3ProjectManager.Core.Application.ReadModels.Customers
+
+<Select2 TItem="CustomerReadModel"
+         Id="@Id"
+         ParentId="@ParentId"
+         @ref="SelectReference"
+         Data="@AvailableCustomers.ToList()"
+         ValueChanged="@(item => CustomerSelected(item))"
+         ValueExpression="@(() => SelectedCustomer)"
+         Placeholder="@L[ResourceKeys.Labels_Choose]"
+         TextExpression="@(item =>  $"{item.Id} - {item.Name}")"
+         SearchingText="@L[ResourceKeys.Labels_Searching]"
+         NoResultsText="@L[ResourceKeys.Labels_NoResults]">
+</Select2>

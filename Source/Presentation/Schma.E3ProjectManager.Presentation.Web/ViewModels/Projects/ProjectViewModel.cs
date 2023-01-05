@@ -8,8 +8,9 @@ namespace Schma.E3ProjectManager.Presentation.Web.ViewModels.Projects
     {
         public Guid Id { get; set; }              
         public string TrackingNumber { get; set; }        
-        public string ProjectName { get; set; }
+        public string Name { get; set; }
         public string CustomerName { get; set; }
+        public string Revision { get; set; }
         public List<ProjectDeviceReadModel> ProjectDevices { get; set; }        
     }
 }

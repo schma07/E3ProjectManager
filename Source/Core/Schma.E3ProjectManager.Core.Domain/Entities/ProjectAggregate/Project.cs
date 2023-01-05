@@ -15,6 +15,7 @@ namespace Schma.E3ProjectManager.Core.Domain.Entities.ProjectAggregate
                         
         public string TrackingNumber { get; private set; }
         public string Name { get; private set; }
+        public string Revision { get; private set; }
         public string CustomerName { get; private set; }
         public bool IsActive { get; private set; }
 

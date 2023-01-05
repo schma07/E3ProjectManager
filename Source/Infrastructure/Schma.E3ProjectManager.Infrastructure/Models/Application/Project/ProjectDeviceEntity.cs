@@ -38,7 +38,7 @@ namespace Schma.E3ProjectManager.Infrastructure.Models
         /// <summary>
         /// The quantity/length of Device item(s) 
         /// </summary>
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
 
         /// <summary>
         /// Navigation property for this device's Project.

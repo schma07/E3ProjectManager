@@ -120,6 +120,9 @@
   <data name="Buttons_Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="Buttons_CreateCustomer" xml:space="preserve">
+    <value>Create Customer</value>
+  </data>
   <data name="Buttons_CreateOrder" xml:space="preserve">
     <value>Create Order</value>
   </data>
@@ -243,6 +246,9 @@
   <data name="Navigation_Top_Users" xml:space="preserve">
     <value>Users</value>
   </data>
+  <data name="Notifications_CustomerCreated_Success" xml:space="preserve">
+    <value>Customer has been created succesfully</value>
+  </data>
   <data name="Notifications_Error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -273,11 +279,17 @@
   <data name="Titles_ChangePassword" xml:space="preserve">
     <value>Change Password</value>
   </data>
+  <data name="Titles_Customers" xml:space="preserve">
+    <value>Customers</value>
+  </data>
   <data name="Titles_EditUser" xml:space="preserve">
     <value>Edit User</value>
   </data>
   <data name="Titles_Login" xml:space="preserve">
     <value>Login</value>
+  </data>
+  <data name="Titles_NewCustomer" xml:space="preserve">
+    <value>New Customer</value>
   </data>
   <data name="Titles_NewUser" xml:space="preserve">
     <value>New User</value>
