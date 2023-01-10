@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Schma.E3ProjectManager.Core.Application.Queries.Customers;
-using Schma.E3ProjectManager.Core.Application.ReadModels.Customers;
+using Schma.E3ProjectManager.Core.Application.ReadModels;
 using Schma.E3ProjectManager.Presentation.Framework.Components;
 
 namespace Schma.E3ProjectManager.Presentation.Web.RazorComponents
